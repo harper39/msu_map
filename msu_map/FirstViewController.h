@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+
+#include "MapView.h"
+#include "JSONParser.h"
 
 @interface FirstViewController : UIViewController
 

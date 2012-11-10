@@ -1,4 +1,4 @@
-//
+;//
 //  FirstViewController.m
 //  msu_map
 //
@@ -12,12 +12,48 @@
 
 @end
 
-@implementation FirstViewController
+@implementation FirstViewController{
+    MapView *mapView;
+    JSONParser *parse;
+    CurrentLocation *currLoc;
+}
 
-- (void)viewDidLoad
+
+// Constructor
+- (void) viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    mapView = [[MapView alloc] init:self];
+    parse = [JSONParser alloc];
+    currLoc = [[CurrentLocation alloc] init];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Retrieve users current location
+    [currLoc Start];
+    NSNumber* latitude  = @42.729944;
+    NSNumber* longitude = @(-84.473534);
+    NSString* buildingID = @"0022";
+    
+    latitude = [currLoc latitude];
+    longitude = [currLoc longitude];
+    NSLog(@"%@", [currLoc deviceLocation]);
+    
+    NSArray *path = [parse getPathToDestination:buildingID
+                                  :latitude
+                                  :longitude];
+    
+    [mapView addOverlayArray:path];
+    
+}
+
+//  Destructor
+- (void) dealloc
+{
+    mapView = nil;
+    parse = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -25,5 +61,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

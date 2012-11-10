@@ -29,6 +29,11 @@
 		24EC524316275786008D9BBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC521016275786008D9BBF /* Foundation.framework */; };
 		24EC524B16275786008D9BBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24EC524916275786008D9BBF /* InfoPlist.strings */; };
 		24EC524E16275786008D9BBF /* msu_mapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC524D16275786008D9BBF /* msu_mapTests.m */; };
+		24EC5259164E065E008D9BBF /* CurrentLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC5258164E065E008D9BBF /* CurrentLocation.m */; };
+		24EC5262164E122B008D9BBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC5261164E122B008D9BBF /* MapKit.framework */; };
+		24EC5264164E1232008D9BBF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC5263164E1232008D9BBF /* CoreLocation.framework */; };
+		24EC526C164E2516008D9BBF /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC526B164E2516008D9BBF /* JSONParser.m */; };
+		24EC527D164E4AD3008D9BBF /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC527C164E4AD3008D9BBF /* MapView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +76,15 @@
 		24EC524A16275786008D9BBF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24EC524C16275786008D9BBF /* msu_mapTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = msu_mapTests.h; sourceTree = "<group>"; };
 		24EC524D16275786008D9BBF /* msu_mapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = msu_mapTests.m; sourceTree = "<group>"; };
+		24EC5257164E065E008D9BBF /* CurrentLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentLocation.h; sourceTree = "<group>"; };
+		24EC5258164E065E008D9BBF /* CurrentLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentLocation.m; sourceTree = "<group>"; };
+		24EC5261164E122B008D9BBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		24EC5263164E1232008D9BBF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24EC526A164E2516008D9BBF /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
+		24EC526B164E2516008D9BBF /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParser.m; sourceTree = "<group>"; };
+		24EC527B164E4AD2008D9BBF /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
+		24EC527C164E4AD3008D9BBF /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
+		24EC5282164ED209008D9BBF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24EC5264164E1232008D9BBF /* CoreLocation.framework in Frameworks */,
+				24EC5262164E122B008D9BBF /* MapKit.framework in Frameworks */,
 				24EC520F16275786008D9BBF /* UIKit.framework in Frameworks */,
 				24EC521116275786008D9BBF /* Foundation.framework in Frameworks */,
 				24EC521316275786008D9BBF /* CoreGraphics.framework in Frameworks */,
@@ -100,6 +116,9 @@
 		24EC51FF16275785008D9BBF = {
 			isa = PBXGroup;
 			children = (
+				24EC5282164ED209008D9BBF /* libsqlite3.0.dylib */,
+				24EC5263164E1232008D9BBF /* CoreLocation.framework */,
+				24EC5261164E122B008D9BBF /* MapKit.framework */,
 				24EC521416275786008D9BBF /* msu_map */,
 				24EC524616275786008D9BBF /* msu_mapTests */,
 				24EC520D16275786008D9BBF /* Frameworks */,
@@ -130,12 +149,11 @@
 		24EC521416275786008D9BBF /* msu_map */ = {
 			isa = PBXGroup;
 			children = (
+				24EC5265164E1EC9008D9BBF /* map */,
 				24EC521D16275786008D9BBF /* AppDelegate.h */,
 				24EC521E16275786008D9BBF /* AppDelegate.m */,
 				24EC522616275786008D9BBF /* MainStoryboard_iPhone.storyboard */,
 				24EC522916275786008D9BBF /* MainStoryboard_iPad.storyboard */,
-				24EC522C16275786008D9BBF /* FirstViewController.h */,
-				24EC522D16275786008D9BBF /* FirstViewController.m */,
 				24EC522F16275786008D9BBF /* first.png */,
 				24EC523116275786008D9BBF /* first@2x.png */,
 				24EC523316275786008D9BBF /* SecondViewController.h */,
@@ -178,6 +196,21 @@
 				24EC524916275786008D9BBF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24EC5265164E1EC9008D9BBF /* map */ = {
+			isa = PBXGroup;
+			children = (
+				24EC522C16275786008D9BBF /* FirstViewController.h */,
+				24EC522D16275786008D9BBF /* FirstViewController.m */,
+				24EC5257164E065E008D9BBF /* CurrentLocation.h */,
+				24EC5258164E065E008D9BBF /* CurrentLocation.m */,
+				24EC527B164E4AD2008D9BBF /* MapView.h */,
+				24EC527C164E4AD3008D9BBF /* MapView.m */,
+				24EC526A164E2516008D9BBF /* JSONParser.h */,
+				24EC526B164E2516008D9BBF /* JSONParser.m */,
+			);
+			name = map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +332,9 @@
 				24EC521F16275786008D9BBF /* AppDelegate.m in Sources */,
 				24EC522E16275786008D9BBF /* FirstViewController.m in Sources */,
 				24EC523516275786008D9BBF /* SecondViewController.m in Sources */,
+				24EC5259164E065E008D9BBF /* CurrentLocation.m in Sources */,
+				24EC526C164E2516008D9BBF /* JSONParser.m in Sources */,
+				24EC527D164E4AD3008D9BBF /* MapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +450,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -425,7 +463,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -483,6 +523,7 @@
 				24EC525316275787008D9BBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24EC525416275787008D9BBF /* Build configuration list for PBXNativeTarget "msu_mapTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +532,7 @@
 				24EC525616275787008D9BBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
