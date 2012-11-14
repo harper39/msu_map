@@ -12,6 +12,11 @@
 #include "MapView.h"
 #include "JSONParser.h"
 
-@interface FirstViewController : UIViewController
+// Control map view
+@interface MapViewController : UIViewController
+@property (strong) NSString *buildingID;
 
+// draw a route on the map using building id
+// the building ID can be set by setBuildingID
+- (void) drawRoute;
 @end

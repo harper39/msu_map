@@ -7,16 +7,18 @@
 //
 
 #import "MapView.h"
+#import "MapViewController.h"
 
 @implementation MapView{
     MKMapView *mapView; // the map view from mapkit
     CurrentLocation *currLoc; // the current location
+    MapViewController *parent;
 }
 
 /*! Constructor
  * \param window the window this mapview live in
  */
-- (id) init:(UIViewController *)window{
+- (id) init:(MapViewController *)window{
     if(!(self = [super init]))
         return nil;
     mapView = [[MKMapView alloc] initWithFrame:window.view.bounds];
@@ -37,6 +39,7 @@
     
     [window.view addSubview:mapView];
     
+    parent = window;
     return self;
 }
 
@@ -61,6 +64,12 @@
     else return nil;
 }
 
+// Use delegate to update the route whenever the user change location
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    [self UpdateRoute];
+}
+
 
 // Add an overlay of route using array of points
 // to the existing map view
@@ -76,6 +85,19 @@
     
     [mapView addOverlay:pathPolyline];
     //NSLog(@"reach here");
+}
+
+// Redraw the route
+- (void) UpdateRoute
+{
+    [self ClearOverlays];
+    [parent drawRoute];
+}
+
+// Clear all the overlays of mapView
+- (void) ClearOverlays
+{
+    [mapView removeOverlays:mapView.overlays];
 }
 
 @end

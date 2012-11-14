@@ -12,8 +12,12 @@
 
 #include "CurrentLocation.h"
 
+@class MapViewController;
+
 @interface MapView : NSObject <MKMapViewDelegate, CLLocationManagerDelegate>
 
-- (id) init: (UIViewController*) window;
+- (id) init: (MapViewController*) window;
 - (void) addOverlayArray: (NSArray *) path;
+- (void) UpdateRoute;
+- (void) ClearOverlays;
 @end

@@ -7,24 +7,13 @@
 //
 
 #import "CurrentLocation.h"
+#import "MapView.h"
 
 // Current location class
 @implementation CurrentLocation {
 	CLLocationManager *locationManager;
+    MapView *view;
 }
-
-
-/*
-// Constructor
-- (id) init
-{
-    if(!(self = [super init]))
-        return nil;
-    locationManager = [[CLLocationManager alloc] init];
-    
-    return self;
-}
-*/
  
 // Destructor
 - (void) dealloc
@@ -77,6 +66,7 @@
 #pragma mark - CLLocationManagerDelegate
 
 // Delegate method from the CLLocationManagerDelegate protocol.
+// print out message for debugging purpose only
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power
@@ -88,16 +78,6 @@
         NSLog(@"latitude %+.6f, longitude %+.6f\n",
               location.coordinate.latitude,
               location.coordinate.longitude);
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    NSLog(@"didUpdateToLocation: %@", newLocation);
-    CLLocation *currentLocation = newLocation;
-    
-    if (currentLocation != nil) {
-
     }
 }
 
