@@ -1,5 +1,5 @@
-ABB, MASON AND ABBOT HALL, 0302, Abbot Hall, University Housing - Residence Hall, abbot,
-PTM, ABRAMS PLANETARIUM, 0165, Planetarium (Abrams), Popular Destination, abrams,
+ABB, MASON AND ABBOT HALL, 0302, Abbot Hall, University Housing - Residence Hall, abbot, erin
+PTM, ABRAMS PLANETARIUM, 0165, Planetarium (Abrams), Popular Destination, abrams, minh
 HAB, HANNAH ADMINISTRATION, 0067, John A. Hannah Administration Building, Administration - Popular Destination, hannah,
 FAE, FARRALL AG ENGINEERING HALL, 0091, Agricultural Engineering Hall (Farrall), XXXXX, farrall, Farrall Ag Eng Hall, 
 AGH, AGRICULTURE HALL, 0022, Agriculture Hall, XXXXX, agriculture, Ag Hall,

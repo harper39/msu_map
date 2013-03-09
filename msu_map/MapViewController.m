@@ -55,8 +55,14 @@
                                                :latitude
                                                :longitude];
     
-        [mapView addOverlayArray:path];
-        
+        if (path)
+        {
+            [mapView addOverlayArray:path];
+        }
+        else
+        {
+            NSLog(@"Cannot connect to server");
+        }
     }
     else {
         NSLog(@"Building ID has not been initialize");

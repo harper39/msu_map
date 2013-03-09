@@ -16,7 +16,7 @@
 
 @implementation BuildingTableViewController{
     BuildingSystem *buildings;
-    Building *selectedBuilding;
+    NSArray* searchResults;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -24,6 +24,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        searchResults = nil;
     }
     return self;
 }
@@ -62,7 +63,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return buildings.getBuildings.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        // in search table
+        return [searchResults count];
+        
+    } else {
+        // in list table
+        return buildings.getBuildings.count;
+    }
 }
 
 // Contain of each row
@@ -76,7 +84,14 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [[buildings.getBuildings objectAtIndex:indexPath.row] commonName];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        // in search table
+        //NSInteger inx = [[searchResults objectAtIndex:indexPath.row] integerValue];
+        cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] commonName];
+    } else {
+        // in list table
+        cell.textLabel.text = [[buildings.getBuildings objectAtIndex:indexPath.row] commonName];
+    }
     
     return cell;
 }
@@ -125,13 +140,59 @@
 // Select a building from the list
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedBuilding = [buildings.getBuildings objectAtIndex:indexPath.row];
     return indexPath;
 }
 
+// Change view
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [segue.destinationViewController initWithBuilding:selectedBuilding];
+    if ([segue.identifier isEqualToString:@"showBuildingInfo"]) {     
+        BuildingInfoViewController *destViewController = segue.destinationViewController;
+        
+        Building *selectedBuilding = nil;
+        
+        if ([self.searchDisplayController isActive]) {
+            selectedBuilding = [searchResults objectAtIndex:[self.searchDisplayController.searchResultsTableView indexPathForSelectedRow].row];
+        } else {
+            NSInteger inx = [self.tableView indexPathForSelectedRow].row;
+            selectedBuilding = [[buildings getBuildings] objectAtIndex:inx];
+       }
+
+        [destViewController initWithBuilding:selectedBuilding];
+    }
+
+}
+
+// Update the searchResults array to get search table based on query
+// This is where the search query is done using predicate (if-else statement)
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"(SELF.commonName contains[cd] %@) OR (SELF.alias contains[cd] %@)",
+                                    searchText, searchText];
+    
+    searchResults = [[buildings getBuildings] filteredArrayUsingPredicate:resultPredicate];
+
+}
+
+// Search display controller (not useful)
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+// Search bar segue to change view
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        [self performSegueWithIdentifier: @"showBuildingInfo" sender: self];
+    }
 }
 
 @end

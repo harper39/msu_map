@@ -16,10 +16,11 @@
 @synthesize commonName;
 @synthesize description;
 @synthesize imageName;
+@synthesize alias;
 
 // Please use this initialize to create a building object
 // the line format supposed to be:
-// ABB, MASON AND ABBOT HALL, 0302, Abbot Hall, University Housing - REsidence Hall, abbot, 
+// ABB, MASON AND ABBOT HALL, 0302, Abbot Hall, University Housing - REsidence Hall, abbot, (alias)
 - (id) init:(NSString *)line
 {
     NSArray* lineArray = [line componentsSeparatedByString:@","];
@@ -30,6 +31,13 @@
     commonName = [self trim:lineArray[3]];
     description = [self trim:lineArray[4]];
     imageName = [self trim:lineArray[5]] ;
+    if (lineArray.count > 6) {
+        // if there is an alias
+        alias = [self trim:lineArray[6]];
+    }
+    else {
+        alias = nil;
+    }
     
     return self;
 }

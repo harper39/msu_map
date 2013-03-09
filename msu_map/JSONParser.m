@@ -60,8 +60,6 @@
     NSString* completeURL = [url stringByAppendingString:jsonString];
     NSString* escapedUrlString = [completeURL stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding];
     NSURL* escapedUrl = [NSURL URLWithString:escapedUrlString];
-    
-    //    NSData *data = [NSData dataWithContentsOfURL: escapedUrl];
     return [NSData dataWithContentsOfURL: escapedUrl];
 }
 
@@ -126,9 +124,14 @@
     
     NSData* data = [self appendJSONDictionary:query toURL:baseURL];
     
-    NSDictionary* content = [self fetchedData:data];    // TODO: should be executed in a seperate thread
-    
-    return [content objectForKey:@"GEOMETRY"];
+    if (data)
+    {
+        NSDictionary* content = [self fetchedData:data];    // TODO: should be executed in a seperate thread
+        return [content objectForKey:@"GEOMETRY"];
+    }
+    else{
+        return nil;
+    }
 }
 
 @end

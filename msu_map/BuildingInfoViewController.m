@@ -65,6 +65,7 @@
     if ([(id)view isKindOfClass:[MapViewController class]])
     {
         [(id)view setBuildingID:[myBuilding ID]]; // downcasting
+        //[(id)view drawRoute]; // downcasting
     }
     else {
         NSLog(@"Wrong MapViewIndex");
