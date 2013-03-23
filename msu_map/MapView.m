@@ -13,6 +13,7 @@
     MKMapView *mapView; // the map view from mapkit
     CurrentLocation *currLoc; // the current location
     MapViewController *parent;
+    NSMutableArray* annotations;
 }
 
 /*! Constructor
@@ -40,6 +41,7 @@
     [window.view addSubview:mapView];
     
     parent = window;
+    annotations = [[NSMutableArray alloc] init];
     return self;
 }
 
@@ -90,14 +92,43 @@
 // Redraw the route
 - (void) UpdateRoute
 {
-    [self ClearOverlays];
+    [self clearOverlays];
     [parent drawRoute];
 }
 
 // Clear all the overlays of mapView
-- (void) ClearOverlays
+- (void) clearOverlays
 {
     [mapView removeOverlays:mapView.overlays];
+}
+
+// Add a point annotation to given coordinate and text
+- (void) addAnnotation:(NSNumber *)latitude :(NSNumber *)longitude :(NSString *)text
+{
+    // Add an annotation
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    CLLocationCoordinate2D theCoordinate;
+    theCoordinate.latitude = [latitude doubleValue];
+    theCoordinate.longitude = [longitude doubleValue];
+    point.coordinate = theCoordinate;
+    point.title = text;
+    //point.subtitle = @"I'm here!!!";
+    [mapView addAnnotation:point];
+    [annotations addObject:point];
+}
+
+// Clear all the annotations on the map
+- (void) clearAnnotations
+{
+    [mapView removeAnnotations:annotations];
+    [annotations removeAllObjects];
+}
+
+// Clear all overlays and annotations on the map
+- (void) clearAll
+{
+    [self clearAnnotations];
+    [self clearOverlays];
 }
 
 @end

@@ -16,7 +16,9 @@
 @property (strong) NSString* commonName; // building common name
 @property (strong) NSString* description; // building description
 @property (strong) NSString* imageName; // the name of the image file
-@property (strong) NSString* alias; // other name of buildings
+@property (strong) NSString* alias; // other name of building
+@property (strong) NSNumber* latitude; // latitude of the building
+@property (strong) NSNumber* longitude; // longitude of the building
 
 - (id) init: (NSString*) line;
 - (UIImage*) getImage;

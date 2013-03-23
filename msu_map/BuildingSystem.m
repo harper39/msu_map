@@ -10,7 +10,7 @@
 
 // file name should not contain the extension (just the way xcode work)
 // the default extension is txt
-#define filename @"buildings"
+#define filename @"build_master"
 
 // Manage the list of buildings
 // Primary function is loading the building list

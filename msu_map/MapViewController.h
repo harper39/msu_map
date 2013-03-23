@@ -12,11 +12,14 @@
 #include "MapView.h"
 #include "JSONParser.h"
 
+// Forward reference
+@class Building;
+
 // Control map view
 @interface MapViewController : UIViewController
-@property (strong) NSString *buildingID;
+@property (strong) Building *destinationBuilding;
 
-// draw a route on the map using building id
-// the building ID can be set by setBuildingID
+// draw a route on the map using destinationBuilding 
 - (void) drawRoute;
+- (void) drawRouteFromCurrentLocationToBuilding: (Building*) building;
 @end

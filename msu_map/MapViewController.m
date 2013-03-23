@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#include "Building.h"
 
 @interface MapViewController ()
 
@@ -17,7 +18,7 @@
     JSONParser *parse;
     CurrentLocation *currLoc;
 }
-@synthesize buildingID;
+@synthesize destinationBuilding;
 
 // Constructor
 - (void) viewDidLoad
@@ -31,25 +32,27 @@
 {
     [super viewDidAppear:animated];
     //buildingID = @"0022";
-    [self drawRoute];
 }
 
 // Draw path between current location and building
 // Can also be used to update route
-// pre buildingID must not be nil
+// pre destinationBuilding must not be nil
 - (void) drawRoute
 {
-    if (buildingID != nil)
+    if (destinationBuilding != nil)
     {
-        [mapView ClearOverlays];
+        [mapView clearAll];
+        
+        NSString* buildingID = [destinationBuilding ID];
         // Retrieve users current location
         [currLoc Start];
         NSNumber* latitude  = @42.729944;
         NSNumber* longitude = @(-84.473534);
         latitude = [currLoc latitude];
         longitude = [currLoc longitude];
-        NSLog(@"%@", [currLoc deviceLocation]);
-    
+        NSLog(@"Current location: %@", [currLoc deviceLocation]);
+        NSLog(@"Destination location: latitude: %@, longitude: %@", [destinationBuilding latitude], [destinationBuilding longitude]);
+        
         // Retrieve the path array frrom server using JSON parser
         NSArray *path = [parse getPathToDestination:buildingID
                                                :latitude
@@ -58,6 +61,7 @@
         if (path)
         {
             [mapView addOverlayArray:path];
+            [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
         }
         else
         {
@@ -65,8 +69,15 @@
         }
     }
     else {
-        NSLog(@"Building ID has not been initialize");
+        NSLog(@"destinationBuilding has not been initialize");
     }
+}
+
+// Draw route from current location to building
+-(void) drawRouteFromCurrentLocationToBuilding:(Building *)building
+{
+    destinationBuilding = building;
+    [self drawRoute];
 }
 
 

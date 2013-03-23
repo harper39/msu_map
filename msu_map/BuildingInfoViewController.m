@@ -64,7 +64,7 @@
     UIViewController *view = self.tabBarController.viewControllers[MapViewIndex];
     if ([(id)view isKindOfClass:[MapViewController class]])
     {
-        [(id)view setBuildingID:[myBuilding ID]]; // downcasting
+        [(id)view drawRouteFromCurrentLocationToBuilding:myBuilding]; // downcasting
         //[(id)view drawRoute]; // downcasting
     }
     else {
