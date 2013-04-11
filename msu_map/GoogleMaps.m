@@ -55,22 +55,23 @@
 	return array;
 }
 
-// Get Path from location to another location using google api
+// Get Path from location to another location using google maps api
 -(NSArray*) getRoutesFrom:(CLLocationCoordinate2D) f to: (CLLocationCoordinate2D) t {
+    // Change location to address string to be given to the url
 	NSString* saddr = [NSString stringWithFormat:@"%f,%f", f.latitude, f.longitude];
 	NSString* daddr = [NSString stringWithFormat:@"%f,%f", t.latitude, t.longitude];
 	
-	NSString* apiUrlStr = [NSString stringWithFormat:@"http://maps.google.com/maps?output=dragdir&dirflg=w&saddr=%@&daddr=%@", saddr, daddr];
-    //NSString* apiUrlStr = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?mode=walking&origin=%@&destination=%@", saddr, daddr];
-	
+	NSString* apiUrlStr = [NSString stringWithFormat:@"https://maps.google.com/maps?output=dragdir&dirflg=w&saddr=%@&daddr=%@", saddr, daddr];
 	NSURL* apiUrl = [NSURL URLWithString:apiUrlStr];
 	NSLog(@"api url: %@", apiUrl);
+    
+    // Get the result
 	NSData *apiResponse = [NSData dataWithContentsOfURL:apiUrl];
     
     if (apiResponse)
     {
+        // Need more error testing
         return [self getPathFromUrlData:apiResponse];
-        //return nil;
     }
     else
     {
@@ -85,8 +86,8 @@
 {
     NSString *responseString=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    //NSLog(@"%@",responseString);
     // Get the points string
+    // this is a dumb way of doing it because I don't know how to work wih JSON object yet
     NSRange pointStart = [responseString rangeOfString:@"points"];
     NSRange pointEnd = [responseString rangeOfString:@",levels:"];
     NSRange pointRange;
