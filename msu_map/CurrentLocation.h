@@ -20,5 +20,6 @@
 - (NSString *) deviceLocation;
 - (NSNumber *) latitude;
 - (NSNumber *) longitude;
+- (CLLocationCoordinate2D) location;
 
 @end

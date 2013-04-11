@@ -11,6 +11,7 @@
 
 #include "MapView.h"
 #include "JSONParser.h"
+#include "GoogleMaps.h"
 
 // Forward reference
 @class Building;

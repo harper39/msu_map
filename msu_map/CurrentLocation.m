@@ -54,6 +54,12 @@
     //return [NSNumber numberWithDouble:-84.473534];
 }
 
+// Get current location in CLLocationCoordinate2D
+- (CLLocationCoordinate2D) location
+{
+    return [[locationManager location] coordinate];
+}
+
 // Get current location in nice format
 - (NSString *) deviceLocation {
 

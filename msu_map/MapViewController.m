@@ -9,6 +9,10 @@
 #import "MapViewController.h"
 #include "Building.h"
 
+// Distant consider as big enough to separate two point (use to
+// compare end point of path with current location)
+const double DistanceThreshold = 0.0005;
+
 @interface MapViewController ()
 
 @end
@@ -17,6 +21,7 @@
     MapView *mapView;
     JSONParser *parse;
     CurrentLocation *currLoc;
+    GoogleMaps *googleMaps;
 }
 @synthesize destinationBuilding;
 
@@ -25,6 +30,7 @@
 {
     mapView = [[MapView alloc] init:self];
     parse = [JSONParser alloc];
+    googleMaps = [GoogleMaps alloc];
     currLoc = [[CurrentLocation alloc] init];
 }
 
@@ -44,6 +50,7 @@
         [mapView clearAll];
         
         NSString* buildingID = [destinationBuilding ID];
+        
         // Retrieve users current location
         [currLoc Start];
         NSNumber* latitude  = @42.729944;
@@ -62,16 +69,42 @@
         {
             [mapView addOverlayArray:path];
             [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
+            
+            // Check the path end point (relate to the current location
+            CLLocationCoordinate2D endPath = CLLocationCoordinate2DMake([[path objectAtIndex:1] doubleValue], [[path objectAtIndex:0] doubleValue]);
+    
+            // Calculate the distance between the endpoint and current location
+            double dx = (endPath.latitude - [latitude doubleValue]);
+            double dy = (endPath.longitude - [longitude doubleValue]);
+            double dist = sqrt(dx*dx + dy*dy);
+            
+            if (dist >= DistanceThreshold)
+            {
+                // if the distance is bigger than the threshold
+                NSLog(@"End point: lat: %f, long: %f", endPath.latitude, endPath.longitude);
+                [self getPathFromCurrentLocationToEndPathUsingGoogleMap:endPath];
+            }
         }
         else
         {
-            NSLog(@"Cannot connect to server");
+            NSLog(@"Cannot connect to retrieve path from server");
         }
     }
     else {
         NSLog(@"destinationBuilding has not been initialize");
     }
 }
+
+// Draw direction from current location to end path using Apple map kit
+-(void) getPathFromCurrentLocationToEndPathUsingGoogleMap: (CLLocationCoordinate2D) endPath
+{
+    NSArray* path = [googleMaps getRoutesFrom:endPath to:[currLoc location]];
+    if (path)
+    {
+        [mapView addOverlayArray:path];
+    }
+}
+
 
 // Draw route from current location to building
 -(void) drawRouteFromCurrentLocationToBuilding:(Building *)building

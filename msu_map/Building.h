@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+// Hold info for building
+// create from build_master.txt through BuildingSystem
 @interface Building : NSObject
 
 @property (strong) NSString* abbreviation; // building abbreviation

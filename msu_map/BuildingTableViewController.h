@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #include "BuildingSystem.h"
 
+// Table view - View lis of building
+// Handle simple search bar
 @interface BuildingTableViewController : UITableViewController 
 
 @end

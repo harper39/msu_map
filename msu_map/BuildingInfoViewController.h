@@ -10,6 +10,7 @@
 
 @class Building;
 
+// View Building info and button to et direction
 @interface BuildingInfoViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *abbreviation;
