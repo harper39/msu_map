@@ -14,10 +14,14 @@
 
 @interface CurrentLocation : NSObject<CLLocationManagerDelegate>
 
+// Start location service
 - (void) Start;
+// Stop location service
 - (void) Stop;
 
+// Print the device location in a nice format
 - (NSString *) deviceLocation;
+
 - (NSNumber *) latitude;
 - (NSNumber *) longitude;
 - (CLLocationCoordinate2D) location;

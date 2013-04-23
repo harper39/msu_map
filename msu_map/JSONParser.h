@@ -12,6 +12,8 @@
 
 @interface JSONParser : NSObject
 
+// Query database to get an array of lat, long
+// \return an array of lat, long
 - (NSArray*)getPathToDestination:(NSString*)buildingID
                     :(NSNumber*)latitude
                     :(NSNumber*)longitude;

@@ -20,7 +20,10 @@
 @interface MapViewController : UIViewController
 @property (strong) Building *destinationBuilding;
 
-// draw a route on the map using destinationBuilding 
+// draw a route on the map using destinationBuilding
+// can be used to update route
 - (void) drawRoute;
+
+// draw route to a building
 - (void) drawRouteFromCurrentLocationToBuilding: (Building*) building;
 @end

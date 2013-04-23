@@ -63,7 +63,7 @@
 	
 	NSString* apiUrlStr = [NSString stringWithFormat:@"https://maps.google.com/maps?output=dragdir&dirflg=w&saddr=%@&daddr=%@", saddr, daddr];
 	NSURL* apiUrl = [NSURL URLWithString:apiUrlStr];
-	NSLog(@"api url: %@", apiUrl);
+	
     
     // Get the result
 	NSData *apiResponse = [NSData dataWithContentsOfURL:apiUrl];
@@ -76,6 +76,7 @@
     else
     {
         NSLog(@"Error in retrieving path from google server");
+        NSLog(@"api url: %@", apiUrl);
         return nil;
     }
 }

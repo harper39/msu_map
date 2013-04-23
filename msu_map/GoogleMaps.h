@@ -14,6 +14,7 @@
 @interface GoogleMaps : NSObject
 
 // Query google API to get path from f to t
+// \return an array of lat, long
 -(NSArray*) getRoutesFrom:(CLLocationCoordinate2D) f
                        to: (CLLocationCoordinate2D) t;
 @end

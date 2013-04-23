@@ -53,8 +53,8 @@ const double DistanceThreshold = 0.0005;
         
         // Retrieve users current location
         [currLoc Start];
-        NSNumber* latitude  = @42.729944;
-        NSNumber* longitude = @(-84.473534);
+        NSNumber* latitude  = @42.729944; // used for testing
+        NSNumber* longitude = @(-84.473534); // used for testing
         latitude = [currLoc latitude];
         longitude = [currLoc longitude];
         NSLog(@"Current location: %@", [currLoc deviceLocation]);
@@ -87,6 +87,7 @@ const double DistanceThreshold = 0.0005;
         }
         else
         {
+            NSLog(@"Query from %@,%@ to %@ unsuccessful", latitude, longitude, buildingID);
             NSLog(@"Cannot connect to retrieve path from server");
         }
     }

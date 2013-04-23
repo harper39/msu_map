@@ -168,6 +168,7 @@
 		ED49117216F00EAE00AAE59E /* yakeley.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4910F116F00EAE00AAE59E /* yakeley.png */; };
 		ED8E566F16FD457700D867A2 /* buildings_backup.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED8E566E16FD457700D867A2 /* buildings_backup.txt */; };
 		ED8E567116FD45DF00D867A2 /* build_master.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED8E567016FD45DF00D867A2 /* build_master.txt */; };
+		ED9741EA17274534007DF6DE /* notWorkingBuilding.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED9741E917274534007DF6DE /* notWorkingBuilding.txt */; };
 		ED99C2B51715F7340069A11E /* GoogleMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ED99C2B41715F7340069A11E /* GoogleMaps.m */; };
 /* End PBXBuildFile section */
 
@@ -357,6 +358,7 @@
 		ED4910F116F00EAE00AAE59E /* yakeley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yakeley.png; sourceTree = "<group>"; };
 		ED8E566E16FD457700D867A2 /* buildings_backup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = buildings_backup.txt; path = raw/buildings_backup.txt; sourceTree = "<group>"; };
 		ED8E567016FD45DF00D867A2 /* build_master.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build_master.txt; sourceTree = "<group>"; };
+		ED9741E917274534007DF6DE /* notWorkingBuilding.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notWorkingBuilding.txt; sourceTree = "<group>"; };
 		ED99C2B31715F7340069A11E /* GoogleMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMaps.h; sourceTree = "<group>"; };
 		ED99C2B41715F7340069A11E /* GoogleMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMaps.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -408,6 +410,7 @@
 				ED49107016F00EAD00AAE59E /* drawable */,
 				ED8E567016FD45DF00D867A2 /* build_master.txt */,
 				ED8E566E16FD457700D867A2 /* buildings_backup.txt */,
+				ED9741E917274534007DF6DE /* notWorkingBuilding.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				ED49117216F00EAE00AAE59E /* yakeley.png in Resources */,
 				ED8E566F16FD457700D867A2 /* buildings_backup.txt in Resources */,
 				ED8E567116FD45DF00D867A2 /* build_master.txt in Resources */,
+				ED9741EA17274534007DF6DE /* notWorkingBuilding.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -130,6 +130,7 @@
         return [content objectForKey:@"GEOMETRY"];
     }
     else{
+        NSLog(@"Data from server is empty");
         return nil;
     }
 }
