@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#include "SegmentHandler.h"
 
 @interface JSONParser : NSObject
 
 // Query database to get an array of lat, long
 // \return an array of lat, long
-- (NSArray*)getPathToDestination:(NSString*)buildingID
+- (SegmentHandler*)getSegmentToDestination:(NSString*)buildingID
                     :(NSNumber*)latitude
                     :(NSNumber*)longitude;
 @end

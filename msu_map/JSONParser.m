@@ -8,9 +8,12 @@
 
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define baseURL @"https://dev.gis.msu.edu/FlexData/wayfinding?QUERY="
+#define baseURL @"https://dev.gis.msu.edu/ws/wayfinding/service?QUERY="
+#define CordSys @"GOOGLE"
 
 #import "JSONParser.h"
+
+NSDictionary* sampleQuery;
 
 // Add methods to NSDictionary
 // -----------------------------------------------
@@ -21,6 +24,38 @@
 @end
 
 @implementation NSDictionary(JSONCategories)
+
+// Create const variables
+// useful only for debugging purpose
++(void) initialize{
+    sampleQuery = @{ @"ARGUMENTS" : @{
+                             @"FROM" : @{
+                                @"CORDSYS" : @"MI83_SF",
+                                @"EASTING" : @13092317.4513359,
+                                @"NORTHING" : @448071.95481256,
+                                @"TYPE" : @"LOCATION",
+                                      },
+                             @"PATHTYPES" :         @[
+                                 @"SIDEWALK",
+                                 @"CWSTR",
+                                 @"CROSSWALK",
+                                 @"CWSGSTR",
+                                 @"BIKELANE",
+                                 @"RDCR",
+                                 @"BIKEPATH"
+                                 ],
+                             @"TO" :         @{
+                                 @"CORDSYS" : @"MI83_SF",
+                                 @"EASTING" : @13092047.8362641,
+                                 @"NORTHING" : @448929.222647803,
+                                 @"TYPE" : @"LOCATION",
+                                 },
+                         
+                             @"CORDSYS" : @"MI83_SF",
+                                       },
+       @"QUERYTYPE" : @"FINDPATHWITHTYPE",
+       };
+}
 
 + (NSDictionary*)dictionaryWithContentsOfJSONURLString:
 (NSString*)urlAddress
@@ -71,14 +106,11 @@
                           JSONObjectWithData:responseData
                           options:kNilOptions
                           error:&error];
-    
     //    // Check if the query was successful
-    //    if ([[json objectForKey:@"STATUS"] isEqualToString:@"SUCCESS"]) {
-    //        NSLog(@"status: %@", [json objectForKey:@"STATUS"]);
-    //        _humanReadable.text = [json objectForKey:@"STATUS"];
-    //    }
-    //    else {
-    //    }
+        if ([[json objectForKey:@"STATUS"] isEqualToString:@"FAILURE"]) {
+            NSLog(@"Query failed: %@", [json objectForKey:@"REASON"]);
+            return nil;
+        }
     
     NSDictionary* content = [json objectForKey:@"CONTENT"];
     return content;
@@ -103,31 +135,44 @@
     //    return [NSNumber numberWithInt:4];
 }
 
-- (NSArray*)getPathToDestination:(NSString*)buildingID
+- (SegmentHandler*)getSegmentToDestination:(NSString*)buildingID
                     :(NSNumber*)latitude
                     :(NSNumber*)longitude
 {
     // Construct the json query
+    latitude = @448929.222647803;
+    longitude = @13092047.8362641;
     NSDictionary* query = [NSDictionary dictionaryWithObjectsAndKeys:
-                           @"FINDPATH", @"QUERYTYPE",
+                           @"FINDPATHWITHTYPE", @"QUERYTYPE",
                            [NSDictionary dictionaryWithObjectsAndKeys:
+                            CordSys, @"CORDSYS",
                             [NSDictionary dictionaryWithObjectsAndKeys:
+                             CordSys, @"CORDSYS",
                              latitude,  @"NORTHING",
                              longitude, @"EASTING",
                              @"LOCATION", @"TYPE", nil], @"FROM",
                             [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"BUILDING",   @"OBJECT_TYPE",
-                             buildingID,       @"OBJECT_ID",
+                             CordSys, @"CORDSYS",
+                             @"BUILDING",  @"OBJECT_TYPE",
+                             buildingID,   @"OBJECT_ID",
                              @"IDENTIFIER", @"TYPE", nil], @"TO",
-                            [NSArray arrayWithObjects: @"SIDEWALK", @"CWSTR", @"CROSSWALK", @"CWSGSTR", nil], @"PATHTYPES", nil],
+                            [NSArray arrayWithObjects: @"SIDEWALK", @"CWSTR", @"CROSSWALK", @"CWSGSTR", @"BIKELANE", @"RDCR",@"BIKEPATH", nil], @"PATHTYPES", nil],
                            @"ARGUMENTS", nil];
+    
+    query = sampleQuery;
+    NSLog(@"%@",query);
     
     NSData* data = [self appendJSONDictionary:query toURL:baseURL];
     
     if (data)
     {
-        NSDictionary* content = [self fetchedData:data];    // TODO: should be executed in a seperate thread
-        return [content objectForKey:@"GEOMETRY"];
+        NSDictionary* content = [self fetchedData:data];
+        if (content)
+        {
+            NSArray* geometry = [content objectForKey:@"GEOMETRY"];
+            return [[SegmentHandler alloc] initWithGeometry:geometry];
+        }
+        else return nil;
     }
     else{
         NSLog(@"Data from server is empty");

@@ -61,12 +61,13 @@ const double DistanceThreshold = 0.0005;
         NSLog(@"Destination location: latitude: %@, longitude: %@", [destinationBuilding latitude], [destinationBuilding longitude]);
         
         // Retrieve the path array frrom server using JSON parser
-        NSArray *path = [parse getPathToDestination:buildingID
+        SegmentHandler *segHandler = [parse getSegmentToDestination:buildingID
                                                :latitude
                                                :longitude];
     
-        if (path)
+        if (segHandler && [segHandler getPath])
         {
+            NSArray* path = [segHandler getPath];
             [mapView addOverlayArray:path];
             [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
             
