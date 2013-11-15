@@ -64,13 +64,14 @@
     UIViewController *view = self.tabBarController.viewControllers[MapViewIndex];
     if ([(id)view isKindOfClass:[MapViewController class]])
     {
+        [self.tabBarController setSelectedIndex:MapViewIndex];
         [(id)view drawRouteFromCurrentLocationToBuilding:myBuilding]; // downcasting
         //[(id)view drawRoute]; // downcasting
     }
     else {
         NSLog(@"Wrong MapViewIndex");
     }
-    [self.tabBarController setSelectedIndex:MapViewIndex];
+
 }
 
 // initialize with a pointer to a building

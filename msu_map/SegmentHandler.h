@@ -20,4 +20,10 @@
                    intersect: (CGPoint) intersection
                           to: (CGPoint) endPoint;
 
+// Return the bearing in "clock format" to turn thourgh intersection
+// Return 1, 2, 3, ..., 12
+// 12 o'clock is straight ahead
+- (NSNumber*) getClockBearing: (CGPoint) from
+                    intersect: (CGPoint) mid
+                           to: (CGPoint) to;
 @end

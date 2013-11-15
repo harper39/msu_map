@@ -15,33 +15,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="20">
-                                <rect key="frame" x="20" y="124" width="280" height="42"/>
+                                <rect key="frame" x="20" y="126" width="279" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="nNz-1Y-Cgv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the first view controller — an instance of FirstViewController — specified in the app delegate." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="21">
-                                <rect key="frame" x="20" y="206" width="280" height="88"/>
+                                <rect key="frame" x="20" y="206" width="279" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="Ikv-jk-tyi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="GSh-PZ-8e0">
+                                <rect key="frame" x="0.0" y="60" width="318" height="439"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOo-Pj-PrA">
+                                <rect key="frame" x="20" y="0.0" width="270" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="NTy-VS-n8V"/>
+                                    <constraint firstAttribute="height" constant="43" id="f9o-jq-sBm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="21" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="QBg-X6-fBV"/>
-                            <constraint firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Qxj-1L-2Yh"/>
-                            <constraint firstItem="20" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ty9-wx-CyI"/>
-                            <constraint firstItem="21" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Zmm-k2-2L7"/>
-                            <constraint firstItem="21" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="40" type="user" id="jX0-Wi-kmb"/>
-                            <constraint firstAttribute="centerY" secondItem="21" secondAttribute="centerY" type="user" id="yWk-L2-m9F"/>
+                            <constraint firstAttribute="bottom" secondItem="GSh-PZ-8e0" secondAttribute="bottom" type="user" id="4Sm-cE-2NJ"/>
+                            <constraint firstItem="21" firstAttribute="trailing" secondItem="20" secondAttribute="trailing" type="default" id="Bmr-DW-1iN"/>
+                            <constraint firstItem="20" firstAttribute="top" secondItem="16" secondAttribute="top" constant="126" id="H6m-gj-bvg"/>
+                            <constraint firstItem="21" firstAttribute="top" secondItem="16" secondAttribute="top" constant="206" id="I30-jw-E9R"/>
+                            <constraint firstItem="GSh-PZ-8e0" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="IgU-FD-UMA"/>
+                            <constraint firstItem="EOo-Pj-PrA" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="QJe-kN-RfK"/>
+                            <constraint firstItem="21" firstAttribute="leading" secondItem="20" secondAttribute="leading" type="default" id="Wsj-K6-oyQ"/>
+                            <constraint firstItem="EOo-Pj-PrA" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="e09-hb-Ljj"/>
+                            <constraint firstItem="EOo-Pj-PrA" firstAttribute="leading" secondItem="20" secondAttribute="leading" type="default" id="u1l-OJ-Sit"/>
+                            <constraint firstItem="GSh-PZ-8e0" firstAttribute="centerX" secondItem="21" secondAttribute="centerX" type="default" id="woj-7g-UBx"/>
+                            <constraint firstItem="GSh-PZ-8e0" firstAttribute="top" secondItem="16" secondAttribute="top" constant="60" id="x7q-fr-VEZ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="first" id="7"/>
                     <navigationItem key="navigationItem" id="hPs-Mq-mtU"/>
+                    <connections>
+                        <outlet property="mapViewUI" destination="GSh-PZ-8e0" id="PrG-mK-PtI"/>
+                        <outlet property="statusBar" destination="EOo-Pj-PrA" id="e1M-MS-J13"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>

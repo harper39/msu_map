@@ -22,16 +22,21 @@ const double DistanceThreshold = 0.0005;
     JSONParser *parse;
     CurrentLocation *currLoc;
     GoogleMaps *googleMaps;
+
+    IBOutlet UIView *mapViewUI;
+    __weak IBOutlet UITextView *statusBar;
 }
 @synthesize destinationBuilding;
 
 // Constructor
 - (void) viewDidLoad
 {
-    mapView = [[MapView alloc] init:self];
+    currLoc = [[CurrentLocation alloc] init];
     parse = [JSONParser alloc];
     googleMaps = [GoogleMaps alloc];
-    currLoc = [[CurrentLocation alloc] init];
+    mapView = [[MapView alloc] init:self withView:mapViewUI];
+
+    statusBar.text = @"starting...";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -60,37 +65,24 @@ const double DistanceThreshold = 0.0005;
         NSLog(@"Current location: %@", [currLoc deviceLocation]);
         NSLog(@"Destination location: latitude: %@, longitude: %@", [destinationBuilding latitude], [destinationBuilding longitude]);
         
-        // Retrieve the path array frrom server using JSON parser
-        SegmentHandler *segHandler = [parse getSegmentToDestination:buildingID
-                                               :latitude
-                                               :longitude];
-    
-        if (segHandler && [segHandler getPath])
-        {
-            NSArray* path = [segHandler getPath];
-            [mapView addOverlayArray:path];
-            [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
+        [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
+        [self updateStatus:@"Retrieving data from server ..."];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSArray* path = [self getPath:buildingID lat:latitude long:longitude]; // 1
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (path)
+                {
+                    [self updateStatus:@"Retrieving data successfully"];
+                    [self addPathToMap:path];
+                }
+                else
+                {
+                    [self updateStatus:@"Cannot connect to server" ];
+                }
             
-            // Check the path end point (relate to the current location
-            CLLocationCoordinate2D endPath = CLLocationCoordinate2DMake([[path objectAtIndex:1] doubleValue], [[path objectAtIndex:0] doubleValue]);
-    
-            // Calculate the distance between the endpoint and current location
-            double dx = (endPath.latitude - [latitude doubleValue]);
-            double dy = (endPath.longitude - [longitude doubleValue]);
-            double dist = sqrt(dx*dx + dy*dy);
-            
-            if (dist >= DistanceThreshold)
-            {
-                // if the distance is bigger than the threshold
-                NSLog(@"End point: lat: %f, long: %f", endPath.latitude, endPath.longitude);
-                [self getPathFromCurrentLocationToEndPathUsingGoogleMap:endPath];
-            }
-        }
-        else
-        {
-            NSLog(@"Query from %@,%@ to %@ unsuccessful", latitude, longitude, buildingID);
-            NSLog(@"Cannot connect to retrieve path from server");
-        }
+            });
+        });
     }
     else {
         NSLog(@"destinationBuilding has not been initialize");
@@ -98,13 +90,10 @@ const double DistanceThreshold = 0.0005;
 }
 
 // Draw direction from current location to end path using Apple map kit
--(void) getPathFromCurrentLocationToEndPathUsingGoogleMap: (CLLocationCoordinate2D) endPath
+-(NSArray*) getPathFromCurrentLocationToEndPathUsingGoogleMap: (CLLocationCoordinate2D) endPath
 {
     NSArray* path = [googleMaps getRoutesFrom:endPath to:[currLoc location]];
-    if (path)
-    {
-        [mapView addOverlayArray:path];
-    }
+    return path;
 }
 
 
@@ -136,5 +125,49 @@ const double DistanceThreshold = 0.0005;
     // Dispose of any resources that can be recreated.
 }
 
+- (NSArray*) getPath: (NSString*) buildingID lat: (NSNumber*) latitude long: (NSNumber*)longitude
+{
+    // Retrieve the path array frrom server using JSON parser
+    SegmentHandler *segHandler = [parse getSegmentToDestination:buildingID
+                                                               :latitude
+                                                               :longitude];
+    
+    if (segHandler && [segHandler getPath])
+    {
+        NSArray* path = [segHandler getPath];        
+        // Check the path end point (relate to the current location
+        CLLocationCoordinate2D endPath = CLLocationCoordinate2DMake([[path objectAtIndex:1] doubleValue], [[path objectAtIndex:0] doubleValue]);
+        
+        // Calculate the distance between the endpoint and current location
+        double dx = (endPath.latitude - [latitude doubleValue]);
+        double dy = (endPath.longitude - [longitude doubleValue]);
+        double dist = sqrt(dx*dx + dy*dy);
+        
+        if (dist >= DistanceThreshold)
+        {
+            // if the distance is bigger than the threshold
+            NSLog(@"End point: lat: %f, long: %f", endPath.latitude, endPath.longitude);
+            //NSArray* googlePath = [self getPathFromCurrentLocationToEndPathUsingGoogleMap:endPath];
+        }
+        
+        return path;
+    }
+    else
+    {
+        NSLog(@"Query from %@,%@ to %@ unsuccessful", latitude, longitude, buildingID);
+        NSLog(@"Cannot connect to retrieve path from server");
+        return NULL;
+    }
+}
+
+- (void) addPathToMap: (NSArray*) path
+{
+    [mapView addOverlayArray:path];
+}
+
+- (void) updateStatus: (NSString*) text
+{
+    statusBar.text = text;
+}
 
 @end

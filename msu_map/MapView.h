@@ -17,7 +17,8 @@
 @interface MapView : NSObject <MKMapViewDelegate, CLLocationManagerDelegate>
 
 // initialize the mapview given the parent window
-- (id) init: (MapViewController*) window;
+- (id) init: (MapViewController*) window
+   withView: (UIView*) view;
 
 // Update the route
 - (void) UpdateRoute;

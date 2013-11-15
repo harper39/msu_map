@@ -12,7 +12,6 @@
 // Current location class
 @implementation CurrentLocation {
 	CLLocationManager *locationManager;
-    MapView *view;
 }
  
 // Destructor

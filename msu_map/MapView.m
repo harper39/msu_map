@@ -11,7 +11,6 @@
 
 @implementation MapView{
     MKMapView *mapView; // the map view from mapkit
-    CurrentLocation *currLoc; // the current location
     MapViewController *parent;
     NSMutableArray* annotations;
 }
@@ -19,10 +18,12 @@
 /*! Constructor
  * \param window the window this mapview live in
  */
-- (id) init:(MapViewController *)window{
+- (id) init:(MapViewController *)window withView:(UIView *)view{
     if(!(self = [super init]))
         return nil;
-    mapView = [[MKMapView alloc] initWithFrame:window.view.bounds];
+ 
+    mapView = [[MKMapView alloc] initWithFrame:view.frame];
+    
     mapView.mapType = MKMapTypeStandard;
     mapView.userTrackingMode = MKUserTrackingModeFollow;
     mapView.delegate = self;
