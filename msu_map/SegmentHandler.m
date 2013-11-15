@@ -36,4 +36,16 @@
     return path;
 }
 
+- (CGFloat) getBearingFrom:(CGPoint)startPoint intersect:(CGPoint)intersection to:(CGPoint)endPoint
+{
+    CGPoint relativeStartPoint = CGPointMake(startPoint.x - intersection.x, startPoint.y - intersection.y);
+    CGPoint relativeEndPoint = CGPointMake(endPoint.x - intersection.x, endPoint.y - intersection.y);
+    float bearingStart = atan2f(relativeStartPoint.y, relativeStartPoint.x);
+    float bearingEnd = atan2f(relativeEndPoint.y, relativeEndPoint.x);
+    float bearingRadian = bearingEnd - bearingStart;
+    float bearingDegrees = bearingRadian * 180 / M_PI;
+    bearingDegrees = (bearingDegrees > 0.0 ? bearingDegrees : (360.0 + bearingDegrees)); // correct discontinuity
+    return bearingDegrees;
+}
+
 @end

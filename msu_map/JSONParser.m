@@ -160,7 +160,7 @@ NSDictionary* sampleQuery;
                            @"ARGUMENTS", nil];
     
     query = sampleQuery;
-    NSLog(@"%@",query);
+    //NSLog(@"%@",query);
     
     NSData* data = [self appendJSONDictionary:query toURL:baseURL];
     

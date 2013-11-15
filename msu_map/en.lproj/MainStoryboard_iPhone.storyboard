@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <development version="4600" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Map View Controller - First-->
@@ -13,12 +15,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="20">
+                                <rect key="frame" x="20" y="124" width="280" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the first view controller — an instance of FirstViewController — specified in the app delegate." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="21">
+                                <rect key="frame" x="20" y="206" width="280" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="Ikv-jk-tyi"/>
                                 </constraints>
@@ -141,12 +145,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2In-hv-is8">
+                                <rect key="frame" x="80" y="159" width="147" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="147" id="24N-65-IxG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Get Direction">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -157,16 +162,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="est-kU-MUX">
+                                <rect key="frame" x="20" y="73" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIG-2A-mKE">
+                                <rect key="frame" x="20" y="102" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-8A-2hK">
+                                <rect key="frame" x="18" y="210" width="285" height="174"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="174" id="GVg-So-UB0"/>
                                     <constraint firstAttribute="width" constant="285" id="sXW-58-zZT"/>
@@ -175,13 +183,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2In-hv-is8" firstAttribute="centerX" secondItem="nof-1l-Wbq" secondAttribute="centerX" type="default" id="6PE-8P-bd5"/>
-                            <constraint firstItem="CIG-2A-mKE" firstAttribute="leading" secondItem="nof-1l-Wbq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9Je-qQ-QSS"/>
-                            <constraint firstItem="CIG-2A-mKE" firstAttribute="top" secondItem="est-kU-MUX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9s4-4a-UTh"/>
-                            <constraint firstItem="est-kU-MUX" firstAttribute="top" secondItem="nof-1l-Wbq" secondAttribute="top" constant="37" id="EZF-pd-vcl"/>
-                            <constraint firstAttribute="bottom" secondItem="Jws-8A-2hK" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Sy4-W2-cTB"/>
-                            <constraint firstItem="Jws-8A-2hK" firstAttribute="centerX" secondItem="2In-hv-is8" secondAttribute="centerX" type="default" id="gpA-Ar-SBM"/>
-                            <constraint firstItem="2In-hv-is8" firstAttribute="top" secondItem="nof-1l-Wbq" secondAttribute="top" constant="112" id="iFP-8b-Es7"/>
+                            <constraint firstItem="2In-hv-is8" firstAttribute="leading" secondItem="nof-1l-Wbq" secondAttribute="leading" constant="80" id="Dog-3m-EKR"/>
+                            <constraint firstItem="CIG-2A-mKE" firstAttribute="top" secondItem="est-kU-MUX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="EFM-YY-2SV"/>
+                            <constraint firstItem="est-kU-MUX" firstAttribute="top" secondItem="nof-1l-Wbq" secondAttribute="top" constant="73" id="EWj-EN-uOE"/>
+                            <constraint firstItem="est-kU-MUX" firstAttribute="leading" secondItem="CIG-2A-mKE" secondAttribute="leading" type="default" id="Kff-65-qi5"/>
+                            <constraint firstItem="Jws-8A-2hK" firstAttribute="centerX" secondItem="nof-1l-Wbq" secondAttribute="centerX" type="default" id="VfS-I5-7mA"/>
+                            <constraint firstItem="Jws-8A-2hK" firstAttribute="top" secondItem="2In-hv-is8" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="c57-Xg-DT3"/>
+                            <constraint firstItem="2In-hv-is8" firstAttribute="top" secondItem="nof-1l-Wbq" secondAttribute="top" constant="159" id="rxD-c1-0WO"/>
                             <constraint firstItem="est-kU-MUX" firstAttribute="leading" secondItem="nof-1l-Wbq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="vBj-wM-WSN"/>
                         </constraints>
                     </view>
@@ -200,26 +208,6 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="BuildingInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BuildingInfoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="getDirection:"/>
-                <relationship kind="outlet" name="abbreviation" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="BuildingTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BuildingTableViewController.h"/>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
