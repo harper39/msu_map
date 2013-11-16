@@ -67,6 +67,12 @@
     return theLocation;
 }
 
+// Check if you can get the current user location
+- (BOOL) isWorking
+{
+    return [CLLocationManager locationServicesEnabled] &&
+    [CLLocationManager authorizationStatus];
+}
 
 #pragma mark - CLLocationManagerDelegate
 

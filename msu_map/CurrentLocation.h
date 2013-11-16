@@ -26,4 +26,7 @@
 - (NSNumber *) longitude;
 - (CLLocationCoordinate2D) location;
 
+// Check if you can retrieve the current user location
+- (BOOL) isWorking;
+
 @end

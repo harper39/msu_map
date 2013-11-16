@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Minh Pham. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
+
 #import "MapViewController.h"
 #include "Building.h"
 
@@ -37,6 +39,7 @@ const double DistanceThreshold = 0.0005;
     mapView = [[MapView alloc] init:self withView:mapViewUI];
 
     statusBar.text = @"starting...";
+    [self drawRoute];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -50,6 +53,12 @@ const double DistanceThreshold = 0.0005;
 // pre destinationBuilding must not be nil
 - (void) drawRoute
 {
+    if (![currLoc isWorking])
+    {
+        [self updateStatus:@"Cannot find current location"];
+        return;
+    }
+    
     if (destinationBuilding != nil)
     {
         [mapView clearAll];
@@ -57,7 +66,6 @@ const double DistanceThreshold = 0.0005;
         NSString* buildingID = [destinationBuilding ID];
         
         // Retrieve users current location
-        [currLoc Start];
         NSNumber* latitude  = @42.729944; // used for testing
         NSNumber* longitude = @(-84.473534); // used for testing
         latitude = [currLoc latitude];
@@ -66,7 +74,7 @@ const double DistanceThreshold = 0.0005;
         NSLog(@"Destination location: latitude: %@, longitude: %@", [destinationBuilding latitude], [destinationBuilding longitude]);
         
         [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
-        [self updateStatus:@"Retrieving data from server ..."];
+        [self updateStatus:@"Retrieving path from server ..."];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSArray* path = [self getPath:buildingID lat:latitude long:longitude]; // 1
@@ -86,6 +94,7 @@ const double DistanceThreshold = 0.0005;
     }
     else {
         NSLog(@"destinationBuilding has not been initialize");
+        [self updateStatus:@"Please choose a destination from the list"];
     }
 }
 
@@ -168,6 +177,7 @@ const double DistanceThreshold = 0.0005;
 - (void) updateStatus: (NSString*) text
 {
     statusBar.text = text;
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 @end

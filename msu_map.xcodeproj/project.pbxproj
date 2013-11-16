@@ -166,6 +166,17 @@
 		ED49117016F00EAE00AAE59E /* wilson.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4910EF16F00EAE00AAE59E /* wilson.png */; };
 		ED49117116F00EAE00AAE59E /* wonders.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4910F016F00EAE00AAE59E /* wonders.png */; };
 		ED49117216F00EAE00AAE59E /* yakeley.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4910F116F00EAE00AAE59E /* yakeley.png */; };
+		ED756C801836EE37007522DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED756C7F1836EE37007522DB /* AudioToolbox.framework */; };
+		ED756C821836F23C007522DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED756C811836F23C007522DB /* Images.xcassets */; };
+		ED756C851836F7FE007522DB /* icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = ED756C831836F7FE007522DB /* icon29.png */; };
+		ED756C891836F8E3007522DB /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = ED756C881836F8E3007522DB /* icon57.png */; };
+		ED756C8C1836F970007522DB /* icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = ED756C8A1836F970007522DB /* icon58.png */; };
+		ED756C8D1836F970007522DB /* icon60.png in Resources */ = {isa = PBXBuildFile; fileRef = ED756C8B1836F970007522DB /* icon60.png */; };
+		ED756C901836FA65007522DB /* icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = ED756C8E1836FA65007522DB /* icon114.png */; };
+		ED756C911836FA65007522DB /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = ED756C8F1836FA65007522DB /* icon120.png */; };
+		ED756C931836FABB007522DB /* icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = ED756C921836FABB007522DB /* icon80.png */; };
+		ED756C961836FBF0007522DB /* beaumontTower.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ED756C951836FBF0007522DB /* beaumontTower.gpx */; };
+		ED756C981836FCE3007522DB /* engineeringBuilding.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ED756C971836FCE3007522DB /* engineeringBuilding.gpx */; };
 		ED8E566F16FD457700D867A2 /* buildings_backup.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED8E566E16FD457700D867A2 /* buildings_backup.txt */; };
 		ED8E567116FD45DF00D867A2 /* build_master.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED8E567016FD45DF00D867A2 /* build_master.txt */; };
 		ED9741EA17274534007DF6DE /* notWorkingBuilding.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED9741E917274534007DF6DE /* notWorkingBuilding.txt */; };
@@ -358,6 +369,17 @@
 		ED4910EF16F00EAE00AAE59E /* wilson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wilson.png; sourceTree = "<group>"; };
 		ED4910F016F00EAE00AAE59E /* wonders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wonders.png; sourceTree = "<group>"; };
 		ED4910F116F00EAE00AAE59E /* yakeley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yakeley.png; sourceTree = "<group>"; };
+		ED756C7F1836EE37007522DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ED756C811836F23C007522DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		ED756C831836F7FE007522DB /* icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon29.png; path = Images.xcassets/icon29.png; sourceTree = "<group>"; };
+		ED756C881836F8E3007522DB /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon57.png; path = Images.xcassets/icon57.png; sourceTree = "<group>"; };
+		ED756C8A1836F970007522DB /* icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon58.png; path = Images.xcassets/icon58.png; sourceTree = "<group>"; };
+		ED756C8B1836F970007522DB /* icon60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon60.png; path = Images.xcassets/icon60.png; sourceTree = "<group>"; };
+		ED756C8E1836FA65007522DB /* icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon114.png; path = Images.xcassets/icon114.png; sourceTree = "<group>"; };
+		ED756C8F1836FA65007522DB /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon120.png; path = Images.xcassets/icon120.png; sourceTree = "<group>"; };
+		ED756C921836FABB007522DB /* icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon80.png; path = Images.xcassets/icon80.png; sourceTree = "<group>"; };
+		ED756C951836FBF0007522DB /* beaumontTower.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beaumontTower.gpx; sourceTree = "<group>"; };
+		ED756C971836FCE3007522DB /* engineeringBuilding.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = engineeringBuilding.gpx; sourceTree = "<group>"; };
 		ED8E566E16FD457700D867A2 /* buildings_backup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = buildings_backup.txt; path = raw/buildings_backup.txt; sourceTree = "<group>"; };
 		ED8E567016FD45DF00D867A2 /* build_master.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build_master.txt; sourceTree = "<group>"; };
 		ED9741E917274534007DF6DE /* notWorkingBuilding.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notWorkingBuilding.txt; sourceTree = "<group>"; };
@@ -374,6 +396,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED756C801836EE37007522DB /* AudioToolbox.framework in Frameworks */,
 				24EC5264164E1232008D9BBF /* CoreLocation.framework in Frameworks */,
 				24EC5262164E122B008D9BBF /* MapKit.framework in Frameworks */,
 				24EC520F16275786008D9BBF /* UIKit.framework in Frameworks */,
@@ -413,6 +436,8 @@
 		24DFD0C9164F677B0034646D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED756C941836FBA1007522DB /* customLocation */,
+				ED756C871836F819007522DB /* icon */,
 				ED49107016F00EAD00AAE59E /* drawable */,
 				ED8E567016FD45DF00D867A2 /* build_master.txt */,
 				ED8E566E16FD457700D867A2 /* buildings_backup.txt */,
@@ -460,6 +485,7 @@
 		24EC520D16275786008D9BBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED756C7F1836EE37007522DB /* AudioToolbox.framework */,
 				24EC520E16275786008D9BBF /* UIKit.framework */,
 				24EC521016275786008D9BBF /* Foundation.framework */,
 				24EC521216275786008D9BBF /* CoreGraphics.framework */,
@@ -485,6 +511,7 @@
 				24EC523116275786008D9BBF /* first@2x.png */,
 				24EC523616275786008D9BBF /* second.png */,
 				24EC523816275786008D9BBF /* second@2x.png */,
+				ED756C811836F23C007522DB /* Images.xcassets */,
 				24EC521516275786008D9BBF /* Supporting Files */,
 			);
 			path = msu_map;
@@ -681,6 +708,29 @@
 			path = "../../../Downloads/MSUPaths_Android-master/res/drawable";
 			sourceTree = "<group>";
 		};
+		ED756C871836F819007522DB /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				ED756C921836FABB007522DB /* icon80.png */,
+				ED756C8E1836FA65007522DB /* icon114.png */,
+				ED756C8F1836FA65007522DB /* icon120.png */,
+				ED756C8A1836F970007522DB /* icon58.png */,
+				ED756C8B1836F970007522DB /* icon60.png */,
+				ED756C881836F8E3007522DB /* icon57.png */,
+				ED756C831836F7FE007522DB /* icon29.png */,
+			);
+			name = icon;
+			sourceTree = "<group>";
+		};
+		ED756C941836FBA1007522DB /* customLocation */ = {
+			isa = PBXGroup;
+			children = (
+				ED756C951836FBF0007522DB /* beaumontTower.gpx */,
+				ED756C971836FCE3007522DB /* engineeringBuilding.gpx */,
+			);
+			name = customLocation;
+			sourceTree = "<group>";
+		};
 		ED90B6AA17165DC7001A0D8D /* libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +786,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Minh Pham";
+				TargetAttributes = {
+					24EC520916275785008D9BBF = {
+						DevelopmentTeam = 2MU5RRNWNL;
+					};
+				};
 			};
 			buildConfigurationList = 24EC520416275785008D9BBF /* Build configuration list for PBXProject "msu_map" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -765,10 +820,12 @@
 				24EC522316275786008D9BBF /* Default@2x.png in Resources */,
 				24EC522516275786008D9BBF /* Default-568h@2x.png in Resources */,
 				24EC522816275786008D9BBF /* MainStoryboard_iPhone.storyboard in Resources */,
+				ED756C911836FA65007522DB /* icon120.png in Resources */,
 				24EC522B16275786008D9BBF /* MainStoryboard_iPad.storyboard in Resources */,
 				24EC523016275786008D9BBF /* first.png in Resources */,
 				24EC523216275786008D9BBF /* first@2x.png in Resources */,
 				24EC523716275786008D9BBF /* second.png in Resources */,
+				ED756C8C1836F970007522DB /* icon58.png in Resources */,
 				24EC523916275786008D9BBF /* second@2x.png in Resources */,
 				ED4910F216F00EAE00AAE59E /* abbot.png in Resources */,
 				ED4910F316F00EAE00AAE59E /* abrams.png in Resources */,
@@ -777,6 +834,7 @@
 				ED4910F616F00EAE00AAE59E /* alumni_chapel.png in Resources */,
 				ED4910F716F00EAE00AAE59E /* angell.png in Resources */,
 				ED4910F816F00EAE00AAE59E /* anthony_hall.png in Resources */,
+				ED756C851836F7FE007522DB /* icon29.png in Resources */,
 				ED4910F916F00EAE00AAE59E /* auditorium.png in Resources */,
 				ED4910FA16F00EAE00AAE59E /* bailey_hall.png in Resources */,
 				ED4910FB16F00EAE00AAE59E /* baker.png in Resources */,
@@ -797,6 +855,7 @@
 				ED49110A16F00EAE00AAE59E /* chittenden.png in Resources */,
 				ED49110B16F00EAE00AAE59E /* clinicalcenter.png in Resources */,
 				ED49110C16F00EAE00AAE59E /* college_of_law.png in Resources */,
+				ED756C961836FBF0007522DB /* beaumontTower.gpx in Resources */,
 				ED49110D16F00EAE00AAE59E /* communication.png in Resources */,
 				ED49110E16F00EAE00AAE59E /* computer_center.png in Resources */,
 				ED49110F16F00EAE00AAE59E /* conrad.png in Resources */,
@@ -831,7 +890,9 @@
 				ED49112C16F00EAE00AAE59E /* imcircle.png in Resources */,
 				ED49112D16F00EAE00AAE59E /* imeast.png in Resources */,
 				ED49112E16F00EAE00AAE59E /* instrmedia.png in Resources */,
+				ED756C931836FABB007522DB /* icon80.png in Resources */,
 				ED49112F16F00EAE00AAE59E /* internatcen.png in Resources */,
+				ED756C981836FCE3007522DB /* engineeringBuilding.gpx in Resources */,
 				ED49113016F00EAE00AAE59E /* jenison.png in Resources */,
 				ED49113116F00EAE00AAE59E /* kedzie.png in Resources */,
 				ED49113216F00EAE00AAE59E /* kellogg_center.png in Resources */,
@@ -841,12 +902,14 @@
 				ED49113616F00EAE00AAE59E /* library.png in Resources */,
 				ED49113716F00EAE00AAE59E /* life.png in Resources */,
 				ED49113816F00EAE00AAE59E /* linton.png in Resources */,
+				ED756C821836F23C007522DB /* Images.xcassets in Resources */,
 				ED49113916F00EAE00AAE59E /* manlymiles.png in Resources */,
 				ED49113A16F00EAE00AAE59E /* marshall_adams.png in Resources */,
 				ED49113B16F00EAE00AAE59E /* marymayo.png in Resources */,
 				ED49113C16F00EAE00AAE59E /* mason.png in Resources */,
 				ED49113D16F00EAE00AAE59E /* mcdonel.png in Resources */,
 				ED49113E16F00EAE00AAE59E /* morrill.png in Resources */,
+				ED756C891836F8E3007522DB /* icon57.png in Resources */,
 				ED49113F16F00EAE00AAE59E /* munn.png in Resources */,
 				ED49114016F00EAE00AAE59E /* museum.png in Resources */,
 				ED49114116F00EAE00AAE59E /* music.png in Resources */,
@@ -861,6 +924,7 @@
 				ED49114A16F00EAE00AAE59E /* olin.png in Resources */,
 				ED49114B16F00EAE00AAE59E /* owen.png in Resources */,
 				ED49114C16F00EAE00AAE59E /* packaging.png in Resources */,
+				ED756C901836FA65007522DB /* icon114.png in Resources */,
 				ED49114D16F00EAE00AAE59E /* pavilion.png in Resources */,
 				ED49114E16F00EAE00AAE59E /* phillips.png in Resources */,
 				ED49114F16F00EAE00AAE59E /* physplnt.png in Resources */,
@@ -885,6 +949,7 @@
 				ED49116216F00EAE00AAE59E /* surplus.png in Resources */,
 				ED49116316F00EAE00AAE59E /* svillage.png in Resources */,
 				ED49116416F00EAE00AAE59E /* svillage_comcenter.png in Resources */,
+				ED756C8D1836F970007522DB /* icon60.png in Resources */,
 				ED49116516F00EAE00AAE59E /* tennis.png in Resources */,
 				ED49116616F00EAE00AAE59E /* tennis1.png in Resources */,
 				ED49116716F00EAE00AAE59E /* union.png in Resources */,
@@ -1061,6 +1126,9 @@
 		24EC525216275787008D9BBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
@@ -1074,6 +1142,9 @@
 		24EC525316275787008D9BBF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
