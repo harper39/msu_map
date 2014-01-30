@@ -14,7 +14,14 @@
 @interface JSONParser : NSObject
 
 // Query database to get an array of lat, long
+// Using old query system
 // \return an array of lat, long
+-(NSArray*)getPathToDestination:(NSString*)buildingID
+                               :(NSNumber*) latitude
+                               :(NSNumber*) longitude;
+
+//  Query database to get segments data
+// TO-DO server is not working right now
 - (SegmentHandler*)getSegmentToDestination:(NSString*)buildingID
                     :(NSNumber*)latitude
                     :(NSNumber*)longitude;

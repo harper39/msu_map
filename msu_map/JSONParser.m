@@ -180,4 +180,35 @@ NSDictionary* sampleQuery;
     }
 }
 
+
+- (NSArray*)getPathToDestination:(NSString*)buildingID
+                                :(NSNumber*)latitude
+                                :(NSNumber*)longitude
+{
+    // Construct the json query
+    NSDictionary* query = [NSDictionary dictionaryWithObjectsAndKeys:
+                           @"FINDPATH", @"QUERYTYPE",
+                           [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSDictionary dictionaryWithObjectsAndKeys:
+                             latitude,  @"NORTHING",
+                             longitude, @"EASTING",
+                             @"LOCATION", @"TYPE", nil], @"FROM",
+                            [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"BUILDING",   @"OBJECT_TYPE",
+                             buildingID,       @"OBJECT_ID",
+                             @"IDENTIFIER", @"TYPE", nil], @"TO",
+                            [NSArray arrayWithObjects: @"SIDEWALK", @"CWSTR", @"CROSSWALK", @"CWSGSTR", nil], @"PATHTYPES", nil],
+                           @"ARGUMENTS", nil];
+    
+    NSData* data = [self appendJSONDictionary:query toURL:baseURL];
+    
+    if (data)
+    {
+        NSDictionary* content = [self fetchedData:data];    // TODO: should be executed in a seperate thread
+        return [content objectForKey:@"GEOMETRY"];
+    }
+    else{
+        return nil;
+    }
+}
 @end

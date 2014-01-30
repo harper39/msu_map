@@ -446,13 +446,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		24DFD0E1164F97AA0034646D /* backup */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = backup;
-			sourceTree = "<group>";
-		};
 		24DFD1EB16530D100034646D /* raw */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,9 +490,7 @@
 		24EC521416275786008D9BBF /* msu_map */ = {
 			isa = PBXGroup;
 			children = (
-				ED90B6AA17165DC7001A0D8D /* libraries */,
 				24DFD1EB16530D100034646D /* raw */,
-				24DFD0E1164F97AA0034646D /* backup */,
 				24DFD0C9164F677B0034646D /* Resources */,
 				24DFD0B9164F0E6A0034646D /* building_list */,
 				24EC5265164E1EC9008D9BBF /* map */,
@@ -729,14 +720,6 @@
 				ED756C971836FCE3007522DB /* engineeringBuilding.gpx */,
 			);
 			name = customLocation;
-			sourceTree = "<group>";
-		};
-		ED90B6AA17165DC7001A0D8D /* libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = libraries;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

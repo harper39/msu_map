@@ -65,6 +65,8 @@ const double DistanceThreshold = 0.0005;
         
         NSString* buildingID = [destinationBuilding ID];
         
+        [currLoc Start];
+        
         // Retrieve users current location
         NSNumber* latitude  = @42.729944; // used for testing
         NSNumber* longitude = @(-84.473534); // used for testing
@@ -81,7 +83,7 @@ const double DistanceThreshold = 0.0005;
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (path)
                 {
-                    [self updateStatus:@"Retrieving data successfully"];
+                    [self updateStatus:@"Retrieved data successfully"];
                     [self addPathToMap:path];
                 }
                 else
@@ -91,6 +93,7 @@ const double DistanceThreshold = 0.0005;
             
             });
         });
+        
     }
     else {
         NSLog(@"destinationBuilding has not been initialize");
@@ -134,16 +137,28 @@ const double DistanceThreshold = 0.0005;
     // Dispose of any resources that can be recreated.
 }
 
+// Get path array from server
 - (NSArray*) getPath: (NSString*) buildingID lat: (NSNumber*) latitude long: (NSNumber*)longitude
 {
     // Retrieve the path array frrom server using JSON parser
+    /*
     SegmentHandler *segHandler = [parse getSegmentToDestination:buildingID
                                                                :latitude
                                                                :longitude];
+     */
+    SegmentHandler *segHandler = nil;
+    NSArray* path = nil;
     
     if (segHandler && [segHandler getPath])
     {
-        NSArray* path = [segHandler getPath];        
+        path = [segHandler getPath];
+    }
+    else
+    {
+        path = [parse getPathToDestination:buildingID :latitude :longitude];
+    }
+    if (path != nil)
+    {
         // Check the path end point (relate to the current location
         CLLocationCoordinate2D endPath = CLLocationCoordinate2DMake([[path objectAtIndex:1] doubleValue], [[path objectAtIndex:0] doubleValue]);
         
@@ -177,7 +192,7 @@ const double DistanceThreshold = 0.0005;
 - (void) updateStatus: (NSString*) text
 {
     statusBar.text = text;
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 @end
