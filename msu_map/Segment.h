@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-// Represent a segment with points, length and type
+// Represent a segment with points, length, type and name
 @interface Segment : NSObject
 
+// init with properly format json object
 - (id) initWithJSON: (NSDictionary*) json;
 
 - (NSArray*) getPath; // get an array of lat and long consist of this segment

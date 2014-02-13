@@ -25,4 +25,8 @@
 - (SegmentHandler*)getSegmentToDestination:(NSString*)buildingID
                     :(NSNumber*)latitude
                     :(NSNumber*)longitude;
+
+// Query database to get a test segment
+// Should not be used in actual application
+- (SegmentHandler*) getTestSegment;
 @end

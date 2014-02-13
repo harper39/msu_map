@@ -28,7 +28,10 @@
 
 // Add overlay to the map with an array of path
 // \param path an array of latitude and longitude
+// \param color color of the path
 - (void) addOverlayArray: (NSArray*) path;
+- (void) addOverlayArray: (NSArray*) path
+                        : (UIColor*) color;
 - (void) clearOverlays; // clear all routes
 
 // Add a point annotation to the map using the point coordinate (lat, long) and a text to display

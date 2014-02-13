@@ -12,6 +12,7 @@
     NSNumber* length;
     NSString* type;
     NSArray* points;
+    NSString* name;
 }
 
 
@@ -20,6 +21,7 @@
     length = [json objectForKey:@"LENGTH"];
     type = [json objectForKey:@"TYPE"];
     points = [json objectForKey:@"POINTS"];
+    name = [json objectForKey:@"NAME"];
     
     return self;
 }

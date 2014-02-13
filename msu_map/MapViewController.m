@@ -10,6 +10,7 @@
 
 #import "MapViewController.h"
 #include "Building.h"
+#include "Segment.h"
 
 // Distant consider as big enough to separate two point (use to
 // compare end point of path with current location)
@@ -78,9 +79,9 @@ const double DistanceThreshold = 0.0005;
         [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
         [self updateStatus:@"Retrieving path from server ..."];
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSArray* path = [self getPath:buildingID lat:latitude long:longitude]; // 1
-            dispatch_async(dispatch_get_main_queue(), ^{
+            //dispatch_async(dispatch_get_main_queue(), ^{
                 if (path)
                 {
                     [self updateStatus:@"Retrieved data successfully"];
@@ -91,8 +92,8 @@ const double DistanceThreshold = 0.0005;
                     [self updateStatus:@"Cannot connect to server" ];
                 }
             
-            });
-        });
+            //});
+        //});
         
     }
     else {
@@ -146,12 +147,16 @@ const double DistanceThreshold = 0.0005;
                                                                :latitude
                                                                :longitude];
      */
-    SegmentHandler *segHandler = nil;
+    SegmentHandler *segHandler = [parse getTestSegment];
+
     NSArray* path = nil;
     
     if (segHandler && [segHandler getPath])
     {
         path = [segHandler getPath];
+        [self addPathToMap:path];
+        [self addColorfulSegmentToMap:segHandler];
+        path = nil;
     }
     else
     {
@@ -181,6 +186,19 @@ const double DistanceThreshold = 0.0005;
         NSLog(@"Query from %@,%@ to %@ unsuccessful", latitude, longitude, buildingID);
         NSLog(@"Cannot connect to retrieve path from server");
         return NULL;
+    }
+}
+
+// Add rainbow color segment to map
+// only for debugging and giggling purpose only
+- (void) addColorfulSegmentToMap: (SegmentHandler*) segHandler
+{
+    NSArray* segArray = [segHandler getAllSegments];
+    NSArray* colorArray = [NSArray arrayWithObjects: [UIColor redColor], [UIColor orangeColor], [UIColor yellowColor],
+                           [UIColor greenColor], [UIColor blueColor], [UIColor blackColor], nil];
+    for (int i=0; i<[segArray count]; i++)
+    {
+        [mapView addOverlayArray: [[segArray objectAtIndex:i] getPath] :[colorArray objectAtIndex:(i%6)]];
     }
 }
 

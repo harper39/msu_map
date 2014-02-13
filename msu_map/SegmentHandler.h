@@ -15,6 +15,9 @@
 
 - (NSArray*) getPath; // get path from segments
 
+// Return an array of all segments
+- (NSArray*) getAllSegments;
+
 // Return the bearing in degree to turn through the intersection
 - (CGFloat) getBearingFrom: (CGPoint) startPoint
                    intersect: (CGPoint) intersection

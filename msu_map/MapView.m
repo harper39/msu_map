@@ -13,6 +13,7 @@
     MKMapView *mapView; // the map view from mapkit
     MapViewController *parent;
     NSMutableArray* annotations;
+    UIColor* mColor; // used for color of the path
 }
 
 /*! Constructor
@@ -43,6 +44,7 @@
     
     parent = window;
     annotations = [[NSMutableArray alloc] init];
+    mColor = nil;
     return self;
 }
 
@@ -74,10 +76,25 @@
 }
 
 
+// Overlay renderer to render the path
+// used to make path look colorful
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    
+    if(true) {
+        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        routeRenderer.strokeColor = mColor;
+        routeRenderer.lineWidth = 3;
+        return routeRenderer;
+    }else return nil;
+}
+
 // Add an overlay of route using array of points
 // to the existing map view
 - (void) addOverlayArray: (NSArray *) path
 {
+    if (mColor == nil) mColor = [UIColor blueColor]; // default path color is blue color
+    
     CLLocationCoordinate2D pathCoords[[path count]/2];
     //NSLog(@"[path count]: %i", [path count]);
     
@@ -85,9 +102,16 @@
         pathCoords[i] = CLLocationCoordinate2DMake([[path objectAtIndex:2*i+1] doubleValue], [[path objectAtIndex:2*i] doubleValue]);
     
     MKPolyline* pathPolyline = [MKPolyline polylineWithCoordinates:pathCoords count:[path count]/2];
-    
+
     [mapView addOverlay:pathPolyline];
-    //NSLog(@"reach here");
+    mColor = nil;
+}
+
+// Add an overlay of route with color
+- (void) addOverlayArray:(NSArray *)path :(UIColor *)color
+{
+    mColor = color;
+    [self addOverlayArray:path];
 }
 
 // Redraw the route

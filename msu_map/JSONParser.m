@@ -8,8 +8,9 @@
 
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define baseURL @"https://dev.gis.msu.edu/ws/wayfinding/service?QUERY="
+#define BaseURL @"https://dev.gis.msu.edu/ws/wayfinding/service?QUERY="
 #define CordSys @"GOOGLE"
+#define TestURL @"http://gis.msu.edu/segmentsll.json"
 
 #import "JSONParser.h"
 
@@ -125,7 +126,7 @@ NSDictionary* sampleQuery;
                             buildingName,  @"SEARCHTERM", nil],
                            @"ARGUMENTS", nil];
     
-    NSData* data = [self appendJSONDictionary:query toURL:baseURL];
+    NSData* data = [self appendJSONDictionary:query toURL:BaseURL];
     //    NSLog(@"data: %@", data);
     
     NSDictionary* content = [self fetchedData:data];  // TODO: should be executed in a seperate thread
@@ -162,7 +163,7 @@ NSDictionary* sampleQuery;
     query = sampleQuery;
     //NSLog(@"%@",query);
     
-    NSData* data = [self appendJSONDictionary:query toURL:baseURL];
+    NSData* data = [self appendJSONDictionary:query toURL:BaseURL];
     
     if (data)
     {
@@ -180,7 +181,7 @@ NSDictionary* sampleQuery;
     }
 }
 
-
+// Get a path array to desination using old service
 - (NSArray*)getPathToDestination:(NSString*)buildingID
                                 :(NSNumber*)latitude
                                 :(NSNumber*)longitude
@@ -200,7 +201,7 @@ NSDictionary* sampleQuery;
                             [NSArray arrayWithObjects: @"SIDEWALK", @"CWSTR", @"CROSSWALK", @"CWSGSTR", nil], @"PATHTYPES", nil],
                            @"ARGUMENTS", nil];
     
-    NSData* data = [self appendJSONDictionary:query toURL:baseURL];
+    NSData* data = [self appendJSONDictionary:query toURL:BaseURL];
     
     if (data)
     {
@@ -211,4 +212,28 @@ NSDictionary* sampleQuery;
         return nil;
     }
 }
+
+// Get a test segment using TestURL
+// for developing and debugging purpose
+- (SegmentHandler*) getTestSegment
+{
+    NSDictionary* query = nil;
+    NSData* data = [self appendJSONDictionary:query toURL:TestURL];
+    
+    if (data)
+    {
+        NSDictionary* content = [self fetchedData:data];
+        if (content)
+        {
+            NSArray* geometry = [content objectForKey:@"GEOMETRY"];
+            return [[SegmentHandler alloc] initWithGeometry:geometry];
+        }
+        else return nil;
+    }
+    else{
+        NSLog(@"Data from server is empty");
+        return nil;
+    }
+}
+
 @end

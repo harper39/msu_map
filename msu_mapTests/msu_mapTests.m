@@ -31,7 +31,7 @@
 - (void) testQuery
 {
     JSONParser *parse = [JSONParser alloc];
-    SegmentHandler *segHandler = [parse getSegmentToDestination:@"016" :@42.72476731 :@-84.4662846956];
+    SegmentHandler *segHandler = [parse getTestSegment];
     if (segHandler) NSLog(@"Successful retrieve segments from server");
     else STFail(@"Unsuccessful query");
 }

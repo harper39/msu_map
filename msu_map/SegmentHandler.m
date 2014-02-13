@@ -26,6 +26,7 @@
     return self;
 }
 
+// Get path from all segments
 - (NSArray*) getPath
 {
     NSMutableArray* path = [[NSMutableArray alloc] init];
@@ -34,6 +35,12 @@
         [path addObjectsFromArray:[[segmentArray objectAtIndex:i] getPath]];
     }
     return path;
+}
+
+// Return the segment array
+-(NSArray*) getAllSegments
+{
+    return segmentArray;
 }
 
 // Compute the bearing
