@@ -10,9 +10,18 @@
 
 // Represent a segment with points, length, type and name
 @interface Segment : NSObject
+@property (strong) NSArray* pointsArray;
+@property (strong) NSNumber* length;
+@property (strong) NSString* name;
+@property (strong) NSString* type;
 
 // init with properly format json object
 - (id) initWithJSON: (NSDictionary*) json;
 
-- (NSArray*) getPath; // get an array of lat and long consist of this segment
+// init with all properties
+- (id) initWithPath: (NSArray*) aPath
+             length: (NSNumber*) aLength
+               name: (NSString*) aName
+               type: (NSString*) aType;
+
 @end

@@ -148,13 +148,12 @@ const double DistanceThreshold = 0.0005;
                                                                :longitude];
      */
     SegmentHandler *segHandler = [parse getTestSegment];
-
+    
     NSArray* path = nil;
     
     if (segHandler && [segHandler getPath])
     {
-        path = [segHandler getPath];
-        [self addPathToMap:path];
+        [segHandler trimSegment];
         [self addColorfulSegmentToMap:segHandler];
         path = nil;
     }
@@ -198,7 +197,7 @@ const double DistanceThreshold = 0.0005;
                            [UIColor greenColor], [UIColor blueColor], [UIColor blackColor], nil];
     for (int i=0; i<[segArray count]; i++)
     {
-        [mapView addOverlayArray: [[segArray objectAtIndex:i] getPath] :[colorArray objectAtIndex:(i%6)]];
+        [mapView addOverlayArray: [[segArray objectAtIndex:i] pointsArray] :[colorArray objectAtIndex:(i%6)]];
     }
 }
 

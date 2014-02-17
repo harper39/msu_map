@@ -34,6 +34,10 @@
     SegmentHandler *segHandler = [parse getTestSegment];
     if (segHandler) NSLog(@"Successful retrieve segments from server");
     else STFail(@"Unsuccessful query");
+    
+    CGFloat bearing = [segHandler getBearingFromSegmentIndex:0 to:1];
+    if (bearing < 265 || bearing >275) STFail(@"Wrong bearing: %@", bearing);
+    [segHandler trimSegment];
 }
 
 - (void) testGiveDirection

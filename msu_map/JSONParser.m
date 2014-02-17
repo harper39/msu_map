@@ -170,8 +170,7 @@ NSDictionary* sampleQuery;
         NSDictionary* content = [self fetchedData:data];
         if (content)
         {
-            NSArray* geometry = [content objectForKey:@"GEOMETRY"];
-            return [[SegmentHandler alloc] initWithGeometry:geometry];
+            return [[SegmentHandler alloc] initWithContent:content];
         }
         else return nil;
     }
@@ -225,8 +224,7 @@ NSDictionary* sampleQuery;
         NSDictionary* content = [self fetchedData:data];
         if (content)
         {
-            NSArray* geometry = [content objectForKey:@"GEOMETRY"];
-            return [[SegmentHandler alloc] initWithGeometry:geometry];
+            return [[SegmentHandler alloc] initWithContent:content];
         }
         else return nil;
     }
