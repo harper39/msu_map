@@ -34,37 +34,8 @@
     SegmentHandler *segHandler = [parse getTestSegment];
     if (segHandler) NSLog(@"Successful retrieve segments from server");
     else STFail(@"Unsuccessful query");
-    
-    CGFloat bearing = [segHandler getBearingFromSegmentIndex:0 to:1];
-    if (bearing < 265 || bearing >275) STFail(@"Wrong bearing: %@", bearing);
+
     [segHandler trimSegment];
 }
 
-- (void) testGiveDirection
-{
-    CGPoint startPoint = CGPointMake(1, 0);
-    CGPoint intersection = CGPointMake(0, 0);
-    CGPoint endPoint = CGPointMake(-1, 1);
-    SegmentHandler *segHandler = [SegmentHandler alloc];
-    CGFloat bearing = [segHandler getBearingFrom:startPoint intersect:intersection to:endPoint];
-    if (bearing != 225) STFail(@"Wrong bearing: %f compare to 225",bearing);
-    NSNumber *clock = [segHandler getClockBearing:startPoint intersect:intersection to:endPoint];
-    if (![clock isEqualToNumber:@10]) STFail(@"Wrong direction: %@ o'clock", clock);
-    
-    startPoint = CGPointMake(1, 0);
-    intersection = CGPointMake(0, 0);
-    endPoint = CGPointMake(1, 1);
-    bearing = [segHandler getBearingFrom:startPoint intersect:intersection to:endPoint];
-    if (bearing != 45) STFail(@"Wrong bearing: %f compare to 45",bearing);
-    clock = [segHandler getClockBearing:startPoint intersect:intersection to:endPoint];
-    if (![clock isEqualToNumber:@4]) STFail(@"Wrong direction: %@ o'clock", clock);
-    
-    startPoint = CGPointMake(0, 1);
-    intersection = CGPointMake(0, 0);
-    endPoint = CGPointMake(1, 1);
-    bearing = [segHandler getBearingFrom:startPoint intersect:intersection to:endPoint];
-    if (bearing != 315) STFail(@"Wrong bearing: %f compare to 315",bearing);
-    clock = [segHandler getClockBearing:startPoint intersect:intersection to:endPoint];
-    if (![clock isEqualToNumber:@7]) STFail(@"Wrong direction: %@ o'clock", clock);
-}
 @end

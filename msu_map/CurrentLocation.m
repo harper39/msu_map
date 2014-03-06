@@ -42,7 +42,7 @@
     return [NSNumber numberWithDouble:locationManager.location.coordinate.
      latitude];
      
-    //return [NSNumber numberWithDouble:42.729944];
+    //return [NSNumber numberWithDouble:42.729944]; // for debugging
 }
 
 // Get current longitude
@@ -50,7 +50,7 @@
     return [NSNumber numberWithDouble:locationManager.location.coordinate.
      longitude];
     
-    //return [NSNumber numberWithDouble:-84.473534];
+    //return [NSNumber numberWithDouble:-84.473534]; // for debugging
 }
 
 // Get current location in CLLocationCoordinate2D
@@ -71,7 +71,7 @@
 - (BOOL) isWorking
 {
     return [CLLocationManager locationServicesEnabled] &&
-    [CLLocationManager authorizationStatus];
+    [CLLocationManager authorizationStatus] && [self longitude] != 0;
 }
 
 #pragma mark - CLLocationManagerDelegate

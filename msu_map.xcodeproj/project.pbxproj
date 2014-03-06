@@ -36,6 +36,10 @@
 		24EC5264164E1232008D9BBF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC5263164E1232008D9BBF /* CoreLocation.framework */; };
 		24EC526C164E2516008D9BBF /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC526B164E2516008D9BBF /* JSONParser.m */; };
 		24EC527D164E4AD3008D9BBF /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC527C164E4AD3008D9BBF /* MapView.m */; };
+		ED18363018C78E4E000C5FCF /* directionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED18362F18C78E4E000C5FCF /* directionTest.m */; };
+		ED18363218C78F0F000C5FCF /* sampleQuery.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED18363118C78F0F000C5FCF /* sampleQuery.txt */; };
+		ED18363518C795E1000C5FCF /* SegmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED18363418C795E1000C5FCF /* SegmentHelper.m */; };
+		ED30707718B32B4700267171 /* DirectionGiver.m in Sources */ = {isa = PBXBuildFile; fileRef = ED30707618B32B4700267171 /* DirectionGiver.m */; };
 		ED49106F16F00DF300AAE59E /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = ED49106E16F00DF300AAE59E /* Building.m */; };
 		ED4910F216F00EAE00AAE59E /* abbot.png in Resources */ = {isa = PBXBuildFile; fileRef = ED49107116F00EAD00AAE59E /* abbot.png */; };
 		ED4910F316F00EAE00AAE59E /* abrams.png in Resources */ = {isa = PBXBuildFile; fileRef = ED49107216F00EAD00AAE59E /* abrams.png */; };
@@ -239,6 +243,12 @@
 		24EC527B164E4AD2008D9BBF /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		24EC527C164E4AD3008D9BBF /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		24EC5282164ED209008D9BBF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		ED18362F18C78E4E000C5FCF /* directionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = directionTest.m; sourceTree = "<group>"; };
+		ED18363118C78F0F000C5FCF /* sampleQuery.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sampleQuery.txt; sourceTree = "<group>"; };
+		ED18363318C795E1000C5FCF /* SegmentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentHelper.h; sourceTree = "<group>"; };
+		ED18363418C795E1000C5FCF /* SegmentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentHelper.m; sourceTree = "<group>"; };
+		ED30707518B32B4700267171 /* DirectionGiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionGiver.h; sourceTree = "<group>"; };
+		ED30707618B32B4700267171 /* DirectionGiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionGiver.m; sourceTree = "<group>"; };
 		ED49106E16F00DF300AAE59E /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 		ED49107116F00EAD00AAE59E /* abbot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abbot.png; sourceTree = "<group>"; };
 		ED49107216F00EAD00AAE59E /* abrams.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abrams.png; sourceTree = "<group>"; };
@@ -436,21 +446,23 @@
 		24DFD0C9164F677B0034646D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				24DFD1EB16530D100034646D /* text */,
 				ED756C941836FBA1007522DB /* customLocation */,
 				ED756C871836F819007522DB /* icon */,
 				ED49107016F00EAD00AAE59E /* drawable */,
-				ED8E567016FD45DF00D867A2 /* build_master.txt */,
-				ED8E566E16FD457700D867A2 /* buildings_backup.txt */,
-				ED9741E917274534007DF6DE /* notWorkingBuilding.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		24DFD1EB16530D100034646D /* raw */ = {
+		24DFD1EB16530D100034646D /* text */ = {
 			isa = PBXGroup;
 			children = (
+				ED18363118C78F0F000C5FCF /* sampleQuery.txt */,
+				ED9741E917274534007DF6DE /* notWorkingBuilding.txt */,
+				ED8E566E16FD457700D867A2 /* buildings_backup.txt */,
+				ED8E567016FD45DF00D867A2 /* build_master.txt */,
 			);
-			name = raw;
+			name = text;
 			sourceTree = "<group>";
 		};
 		24EC51FF16275785008D9BBF = {
@@ -490,7 +502,7 @@
 		24EC521416275786008D9BBF /* msu_map */ = {
 			isa = PBXGroup;
 			children = (
-				24DFD1EB16530D100034646D /* raw */,
+				ED30707818B32B8800267171 /* segment */,
 				24DFD0C9164F677B0034646D /* Resources */,
 				24DFD0B9164F0E6A0034646D /* building_list */,
 				24EC5265164E1EC9008D9BBF /* map */,
@@ -525,6 +537,7 @@
 		24EC524616275786008D9BBF /* msu_mapTests */ = {
 			isa = PBXGroup;
 			children = (
+				ED18362F18C78E4E000C5FCF /* directionTest.m */,
 				24EC524C16275786008D9BBF /* msu_mapTests.h */,
 				24EC524D16275786008D9BBF /* msu_mapTests.m */,
 				24EC524716275786008D9BBF /* Supporting Files */,
@@ -554,12 +567,23 @@
 				24EC526B164E2516008D9BBF /* JSONParser.m */,
 				ED99C2B31715F7340069A11E /* GoogleMaps.h */,
 				ED99C2B41715F7340069A11E /* GoogleMaps.m */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
+		ED30707818B32B8800267171 /* segment */ = {
+			isa = PBXGroup;
+			children = (
 				EDFE91CA1800905100523DFD /* Segment.h */,
 				EDFE91CB1800905100523DFD /* Segment.m */,
+				ED18363318C795E1000C5FCF /* SegmentHelper.h */,
+				ED18363418C795E1000C5FCF /* SegmentHelper.m */,
+				ED30707518B32B4700267171 /* DirectionGiver.h */,
+				ED30707618B32B4700267171 /* DirectionGiver.m */,
 				EDFE91CD180096E200523DFD /* SegmentHandler.h */,
 				EDFE91CE180096E200523DFD /* SegmentHandler.m */,
 			);
-			name = map;
+			name = segment;
 			sourceTree = "<group>";
 		};
 		ED49107016F00EAD00AAE59E /* drawable */ = {
@@ -887,6 +911,7 @@
 				ED49113816F00EAE00AAE59E /* linton.png in Resources */,
 				ED756C821836F23C007522DB /* Images.xcassets in Resources */,
 				ED49113916F00EAE00AAE59E /* manlymiles.png in Resources */,
+				ED18363218C78F0F000C5FCF /* sampleQuery.txt in Resources */,
 				ED49113A16F00EAE00AAE59E /* marshall_adams.png in Resources */,
 				ED49113B16F00EAE00AAE59E /* marymayo.png in Resources */,
 				ED49113C16F00EAE00AAE59E /* mason.png in Resources */,
@@ -991,7 +1016,9 @@
 				24EC526C164E2516008D9BBF /* JSONParser.m in Sources */,
 				24EC527D164E4AD3008D9BBF /* MapView.m in Sources */,
 				24DFD0C8164F64BC0034646D /* BuildingSystem.m in Sources */,
+				ED30707718B32B4700267171 /* DirectionGiver.m in Sources */,
 				24DFD0D5164F75290034646D /* BuildingTableViewController.m in Sources */,
+				ED18363518C795E1000C5FCF /* SegmentHelper.m in Sources */,
 				24DFD0E7164F9F0A0034646D /* BuildingInfoViewController.m in Sources */,
 				ED49106F16F00DF300AAE59E /* Building.m in Sources */,
 				ED99C2B51715F7340069A11E /* GoogleMaps.m in Sources */,
@@ -1004,6 +1031,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED18363018C78E4E000C5FCF /* directionTest.m in Sources */,
 				24EC524E16275786008D9BBF /* msu_mapTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
