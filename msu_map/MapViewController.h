@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-#include "MapView.h"
-#include "JSONParser.h"
-#include "GoogleMaps.h"
+#import "MapView.h"
+#import "JSONParser.h"
+#import "GoogleMaps.h"
+#import "Building.h"
+#import "Segment.h"
+#import "SegmentHandler.h"
 
 // Forward reference
 @class Building;
@@ -20,9 +23,8 @@
 @interface MapViewController : UIViewController
 @property (strong) Building *destinationBuilding;
 
-// draw a route on the map using destinationBuilding
-// can be used to update route
-- (void) drawRoute;
+// update route using current data
+- (void) updateRoute;
 
 // draw route to a building
 - (void) drawRouteFromCurrentLocationToBuilding: (Building*) building;

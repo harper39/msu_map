@@ -66,9 +66,14 @@ const float MergeAngleThreshold = 15.0;
 }
 
 // Update bearingToNextSegment
-- (void) updateBearingToSegment:(Segment *)toSeg
+// can be tricky and backward
+- (void) updateBearingFromSegment:(Segment *)toSeg
 {
-    self.bearingToNextSegment = [self getBearingToSegment:toSeg];
+    if (toSeg == nil) {
+        self.bearingToNextSegment = 0;
+        return;
+    }
+    self.bearingToNextSegment = 360 - [toSeg getBearingToSegment:self];
 }
 
 // Try to merge to segments together
@@ -152,7 +157,15 @@ const float MergeAngleThreshold = 15.0;
 // Return an array of lat long coordinates
 - (NSArray*) getPathTillIndex:(int)i
 {
-    return [pointsArray subarrayWithRange:NSMakeRange(0, i)];
+    if (i >= [pointsArray count]) {
+        NSLog(@"Index out of range: %d", i);
+        return nil;
+    }
+    if (i % 2 == 0) {
+        NSLog(@"Index should not be even %d",i );
+        return nil;
+    }
+    return [pointsArray subarrayWithRange:NSMakeRange(0, i+1)];
 }
 
 @end

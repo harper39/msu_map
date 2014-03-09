@@ -14,6 +14,8 @@
 
 @class MapViewController;
 
+
+// Draw map and receive update from current location manager
 @interface MapView : NSObject <MKMapViewDelegate, CLLocationManagerDelegate>
 
 // initialize the mapview given the parent window

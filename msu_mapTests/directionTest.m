@@ -74,21 +74,21 @@
 // test distance formula
 - (void) testDistance
 {
-    NSNumber* dist = [segHelper computeDistanceWithLat:-84.4764031621341 long:42.7291385237578 andLat:-84.4762470495053 long:42.7291169136303];
-    flag = [dist doubleValue] > 43 || [dist doubleValue] < 42;
+    double dist = [segHelper computeDistanceWithLat:-84.4764031621341 long:42.7291385237578 andLat:-84.4762470495053 long:42.7291169136303];
+    flag = dist > 43 || dist < 42;
     if (flag) STFail(@"Wrong distance: %@", dist);
     
     dist = [segHelper computeDistanceWithLat:-84.4762470495053 long:42.7291169136303 andLat:-84.4761831793133 long:42.7291042366155];
-    flag = [dist doubleValue] > 18 || [dist doubleValue] < 17;
+    flag = dist > 18 || dist < 17;
     if (flag) STFail(@"Wrong distance: %@", dist);
 
-    dist = [segHelper computePathDistance:[sampleSegment pointsArray] ];
-    flag = [dist doubleValue] > 37 || [dist doubleValue] < 36;
+    dist = [segHelper computePathDistance:[sampleSegment getPath] ];
+    flag = dist > 37 || dist < 36;
     // Weird distance due to the final segment, but about: 36.67
     if (flag) STFail(@"Wrong path distance: %@", dist);
     
-    dist = [segHelper computePathDistance:[sampleSegment2 pointsArray] ];
-    flag = [dist doubleValue] > 162 || [dist doubleValue] < 160;
+    dist = [segHelper computePathDistance:[sampleSegment2 getPath] ];
+    flag = dist > 162 || dist < 160;
     if (flag) STFail(@"Wrong path distance: %@", dist);
 }
 

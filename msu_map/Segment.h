@@ -32,7 +32,7 @@
 - (CGFloat) getBearingToSegment: (Segment*)toSeg;
 
 // Update bearingToNextSegment for the new segment
-- (void) updateBearingToSegment: (Segment*)toSeg;
+- (void) updateBearingFromSegment: (Segment*)toSeg;
 
 // Determine whether a point is on the segment
 // \return index of the pointsArray found where the point is closest
@@ -44,7 +44,7 @@
 // Return an array of lat long coordinates
 - (NSArray*) getPath;
 
-// Return an array of lat long coordinates till an index
+// Return an array of lat long coordinates till an index (include the index as well)
 - (NSArray*) getPathTillIndex: (int) i;
 
 // Return the total path length

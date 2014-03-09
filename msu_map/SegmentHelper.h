@@ -13,6 +13,7 @@
 @interface SegmentHelper : NSObject
 
 // Compute the bearing using three points
+// \return angle between 0 and 360
 - (CGFloat) getBearingFrom:(CGPoint)startPoint intersect:(CGPoint)intersection to:(CGPoint)endPoint;
 
 // Check to see if a point is between two points or not

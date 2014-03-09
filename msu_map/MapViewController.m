@@ -9,8 +9,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 #import "MapViewController.h"
-#include "Building.h"
-#include "Segment.h"
+#import "DirectionGiver.h"
 
 // Distant consider as big enough to separate two point (use to
 // compare end point of path with current location)
@@ -25,6 +24,7 @@ const double DistanceThreshold = 0.0005;
     JSONParser *parse;
     CurrentLocation *currLoc;
     GoogleMaps *googleMaps;
+    SegmentHandler* segHandler;
 
     IBOutlet UIView *mapViewUI;
     __weak IBOutlet UITextView *statusBar;
@@ -38,6 +38,7 @@ const double DistanceThreshold = 0.0005;
     parse = [JSONParser alloc];
     googleMaps = [GoogleMaps alloc];
     mapView = [[MapView alloc] init:self withView:mapViewUI];
+    segHandler = nil;
 
     statusBar.text = @"starting...";
     [self drawRoute];
@@ -50,8 +51,7 @@ const double DistanceThreshold = 0.0005;
 }
 
 // Draw path between current location and building
-// Can also be used to update route
-// pre destinationBuilding must not be nil
+// \pre destinationBuilding must not be nil
 - (void) drawRoute
 {
     if (![currLoc isWorking])
@@ -79,21 +79,21 @@ const double DistanceThreshold = 0.0005;
         [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
         [self updateStatus:@"Retrieving path from server ..."];
         
-        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSArray* path = [self getPath:buildingID lat:latitude long:longitude]; // 1
-            //dispatch_async(dispatch_get_main_queue(), ^{
-                if (path)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self updateSegmentFromServer:buildingID lat:latitude long:longitude]; // 1
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (segHandler)
                 {
                     [self updateStatus:@"Retrieved data successfully"];
-                    [self addPathToMap:path];
+                    [self addColorfulSegmentToMap];
                 }
                 else
                 {
                     [self updateStatus:@"Cannot connect to server" ];
                 }
             
-            //});
-        //});
+            });
+        });
         
     }
     else {
@@ -139,6 +139,18 @@ const double DistanceThreshold = 0.0005;
 }
 
 // Get path array from server
+- (void) updateSegmentFromServer: (NSString*) buildingID lat: (NSNumber*) latitude long: (NSNumber*)longitude
+{
+    // Retrieve the path array frrom server using JSON parser
+    /*
+     SegmentHandler *segHandler = [parse getSegmentToDestination:buildingID
+     :latitude
+     :longitude];
+     */
+    segHandler = [parse getTestSegment];
+}
+
+// Get path array from server
 - (NSArray*) getPath: (NSString*) buildingID lat: (NSNumber*) latitude long: (NSNumber*)longitude
 {
     // Retrieve the path array frrom server using JSON parser
@@ -147,13 +159,13 @@ const double DistanceThreshold = 0.0005;
                                                                :latitude
                                                                :longitude];
      */
-    SegmentHandler *segHandler = [parse getTestSegment];
+    segHandler = [parse getTestSegment];
     
     NSArray* path = nil;
     
-    if (segHandler && [segHandler getPath])
+    if (segHandler && [segHandler getCurrentPath])
     {
-        [self addColorfulSegmentToMap:segHandler];
+        [self addColorfulSegmentToMap];
         path = nil;
     }
     else
@@ -189,7 +201,7 @@ const double DistanceThreshold = 0.0005;
 
 // Add rainbow color segment to map
 // only for debugging and giggling purpose only
-- (void) addColorfulSegmentToMap: (SegmentHandler*) segHandler
+- (void) addColorfulSegmentToMap
 {
     NSArray* segArray = [segHandler getAllSegments];
     NSArray* colorArray = [NSArray arrayWithObjects: [UIColor redColor], [UIColor orangeColor], [UIColor yellowColor],
@@ -209,6 +221,26 @@ const double DistanceThreshold = 0.0005;
 {
     statusBar.text = text;
     //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+
+// Update route using current location
+- (void) updateRoute
+{
+    DirectionGiver* dirGiver = [segHandler dirGiver];
+    UpdateState flag = [dirGiver updateLocationLatitude:[currLoc latitude] longitude:[currLoc longitude]];
+
+    switch (flag) {
+        case UpdateStatusBar:
+        case ChangePath:
+        case NoAction:
+        default:
+            [self updateStatus:[dirGiver directionString]];
+            NSArray* path = [segHandler getCurrentPath];
+            [self addPathToMap:path];
+            break;
+    }
+    
 }
 
 @end

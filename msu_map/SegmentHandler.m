@@ -34,19 +34,25 @@
     return self;
 }
 
-// Get current path from segments
-- (NSArray*) getPath
+// Get current path from segments and current location
+- (NSArray*) getCurrentPath
 {
     int currSegInx = [dirGiver getCurrSegInx];
     int currPointInx = [dirGiver getCurrPointInx];
     
     NSMutableArray* path = [[NSMutableArray alloc] init];
-    for(int i=0; i < currSegInx - 2; i++)
+    for(int i=0; i < currSegInx; i++)
     {
         [path addObjectsFromArray:[[segmentArray objectAtIndex:i] getPath]];
     }
     
-    if (currSegInx >= 0) [path addObjectsFromArray:[[segmentArray objectAtIndex:currSegInx] getPathTillIndex:currPointInx]];
+    if (currSegInx >= 0) {
+        [path addObjectsFromArray:[[segmentArray objectAtIndex:currSegInx] getPathTillIndex:currPointInx]];
+        if ([dirGiver hasCurrentLocation]) {
+            [path addObject:[dirGiver currLong]];
+            [path addObject:[dirGiver currLat]];
+        }
+    }
     return path;
 }
 
@@ -118,11 +124,11 @@
 // used for DirectionGiver
 - (void) computeSegmentsBearing
 {
-    for(int i=0; i<[segmentArray count]-1; i++)
+    for(int i=1; i<[segmentArray count]; i++)
     {
-        [[segmentArray objectAtIndex:i] updateBearingToSegment:[segmentArray objectAtIndex:i+1]];
+        [[segmentArray objectAtIndex:i] updateBearingFromSegment:[segmentArray objectAtIndex:i-1]];
     }
-    [[segmentArray lastObject] updateBearingToSegment:nil];
+    [[segmentArray firstObject] updateBearingFromSegment:nil];
 }
 
 @end

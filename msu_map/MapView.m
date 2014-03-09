@@ -118,7 +118,7 @@
 - (void) UpdateRoute
 {
     [self clearOverlays];
-    [parent drawRoute];
+    [parent updateRoute];
 }
 
 // Clear all the overlays of mapView

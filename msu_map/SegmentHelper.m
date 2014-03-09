@@ -47,8 +47,8 @@ const double DistanceThresHold = 5.0;
 - (BOOL) checkMidPoint:(CGPoint) midPoint between:(CGPoint) aPoint and:(CGPoint) bPoint
 {
     // check to see if midPoint is the same as aPoint or bPoint
-    if (midPoint.x == aPoint.x && midPoint.y == aPoint.y) return true;
-    if (midPoint.x == bPoint.x && midPoint.y == bPoint.y) return true;
+    if (CGPointEqualToPoint(midPoint, aPoint)) return true;
+    if (CGPointEqualToPoint(midPoint, bPoint)) return true;
     
     // Test angle between the points
     CGFloat bearing = [self getBearingFrom:aPoint intersect:midPoint to:bPoint];
@@ -77,7 +77,11 @@ const double DistanceThresHold = 5.0;
 - (double) computePathDistance: (NSArray*) path
 {
     double dist = 0;
-    if (path.count <=2) return 0;
+    if (path.count <=2 || path.count % 2 == 1)
+    {
+        NSLog(@"Invalid input length %d", path.count);
+        return 0;
+    }
     double prevLat = [[path objectAtIndex:0] doubleValue];
     double prevLong = [[path objectAtIndex:1] doubleValue];
     double currLat = 0;
