@@ -20,6 +20,9 @@ const double ConvertFromWGS84ToFeet = 271010.052;
 // Distance Threshold for considering two points are the same
 const double DistanceThresHold = 5.0;
 
+// Distance Ratio for considering points on the same line
+const double MaxDistanceRatio = 0.1;
+
 // Compute the bearing using three points
 - (CGFloat) getBearingFrom:(CGPoint)startPoint intersect:(CGPoint)intersection to:(CGPoint)endPoint
 {
@@ -54,6 +57,26 @@ const double DistanceThresHold = 5.0;
     CGFloat bearing = [self getBearingFrom:aPoint intersect:midPoint to:bPoint];
     
     if (fabsf(bearing - 180) <= MidPointAngleThreshold) return true;
+    
+    // Thinking of the three points as a triangle
+    // Compute the other two angles
+    CGFloat bearingA = [self getBearingFrom:bPoint intersect:aPoint to:midPoint];
+    CGFloat bearingB = [self getBearingFrom:aPoint intersect:bPoint to:midPoint];
+    if (bearingA > 180) bearingA = 360 - bearingA;
+    if (bearingB > 180) bearingB = 360 - bearingB;
+    
+    // Check if the angle at point a and b are both < 90 degree
+    if (bearingA < 90 && bearingB < 90)
+    {
+        // Compute the sides of the triangles
+        double sideA = [self computeDistanceWithLat:bPoint.x long:bPoint.y andLat:midPoint.x long:midPoint.y];
+        double sideB = [self computeDistanceWithLat:aPoint.x long:aPoint.y andLat:midPoint.x long:midPoint.y];
+        double sideMid = [self computeDistanceWithLat:bPoint.x long:bPoint.y andLat:aPoint.x long:aPoint.y];
+        // The distance difference between the two sides and the mid side
+        double distDifference = fabs(sideA + sideB - sideMid);
+        if (distDifference < DistanceThresHold) return true;
+        if ((distDifference / sideMid) < MaxDistanceRatio) return true;
+    }
     
     return false;
 }

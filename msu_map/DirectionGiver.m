@@ -56,7 +56,9 @@
     int newPointInx = 0;
     
     int i = (int)[segHandler count] - 1 ;
-    // looping throught the segment array
+    
+    // looping throught the entire segment array
+    // TODO: improve performance by looking at only a subset of segments
     for (; i>=0; i--)
     {
         newPointInx = [[[segHandler getAllSegments] objectAtIndex:i] findIndexOfLat:latitude long:longitude];

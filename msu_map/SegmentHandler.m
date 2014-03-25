@@ -10,6 +10,7 @@
 
 @implementation SegmentHandler { 
     NSArray* segmentArray; // array contains all segments
+    NSArray* pathArray; // array contains all path
 }
 
 @synthesize pathLength;
@@ -29,31 +30,34 @@
     
     [self trimSegment];
     [self computeSegmentsBearing];
-    
     dirGiver = [[DirectionGiver alloc] initWithSegHandler:self];
+    
+    NSMutableArray* path = [[NSMutableArray alloc] init];
+    for(int i=0; i < [segmentArray count]; i++)
+    {
+        [path addObjectsFromArray:[[segmentArray objectAtIndex:i] getPath]];
+    }
+    pathArray = path;
+    
     return self;
 }
 
 // Get current path from segments and current location
-- (NSArray*) getCurrentPath
+- (NSArray*) getPathWithoutCurrentLocation
 {
     int currSegInx = [dirGiver getCurrSegInx];
     int currPointInx = [dirGiver getCurrPointInx];
+    int pathInx = 0; // index of last point in path array
     
-    NSMutableArray* path = [[NSMutableArray alloc] init];
     for(int i=0; i < currSegInx; i++)
     {
-        [path addObjectsFromArray:[[segmentArray objectAtIndex:i] getPath]];
+        pathInx += [[segmentArray objectAtIndex:i] pathCount];
     }
     
     if (currSegInx >= 0) {
-        [path addObjectsFromArray:[[segmentArray objectAtIndex:currSegInx] getPathTillIndex:currPointInx]];
-        if ([dirGiver hasCurrentLocation]) {
-            [path addObject:[dirGiver currLong]];
-            [path addObject:[dirGiver currLat]];
-        }
+        pathInx += currPointInx;
     }
-    return path;
+    return [pathArray subarrayWithRange:NSMakeRange(0, pathInx)];
 }
 
 // Return the segment array

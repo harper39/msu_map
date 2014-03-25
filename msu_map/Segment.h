@@ -44,6 +44,9 @@
 // Return an array of lat long coordinates
 - (NSArray*) getPath;
 
+// Return number of points in the path
+- (int) pathCount;
+
 // Return an array of lat long coordinates till an index (include the index as well)
 - (NSArray*) getPathTillIndex: (int) i;
 

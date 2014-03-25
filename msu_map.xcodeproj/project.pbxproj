@@ -187,6 +187,7 @@
 		ED99C2B51715F7340069A11E /* GoogleMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ED99C2B41715F7340069A11E /* GoogleMaps.m */; };
 		EDEC8E8618C9195E008230EA /* auditorium.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDEC8E8518C9195E008230EA /* auditorium.gpx */; };
 		EDEC8E8818C91B16008230EA /* auditoriumDoor.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */; };
+		EDF061F418E2389F006294A3 /* auditorium2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDF061F318E2389F006294A3 /* auditorium2.gpx */; };
 		EDFE91CC1800905100523DFD /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFE91CB1800905100523DFD /* Segment.m */; };
 		EDFE91CF180096E200523DFD /* SegmentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFE91CE180096E200523DFD /* SegmentHandler.m */; };
 /* End PBXBuildFile section */
@@ -399,6 +400,7 @@
 		ED99C2B41715F7340069A11E /* GoogleMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMaps.m; sourceTree = "<group>"; };
 		EDEC8E8518C9195E008230EA /* auditorium.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditorium.gpx; sourceTree = "<group>"; };
 		EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditoriumDoor.gpx; sourceTree = "<group>"; };
+		EDF061F318E2389F006294A3 /* auditorium2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditorium2.gpx; sourceTree = "<group>"; };
 		EDFE91CA1800905100523DFD /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segment.h; sourceTree = "<group>"; };
 		EDFE91CB1800905100523DFD /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segment.m; sourceTree = "<group>"; };
 		EDFE91CD180096E200523DFD /* SegmentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentHandler.h; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 			children = (
 				ED756C951836FBF0007522DB /* beaumontTower.gpx */,
 				EDEC8E8518C9195E008230EA /* auditorium.gpx */,
+				EDF061F318E2389F006294A3 /* auditorium2.gpx */,
 				EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */,
 				ED756C971836FCE3007522DB /* engineeringBuilding.gpx */,
 			);
@@ -976,6 +979,7 @@
 				ED49116C16F00EAE00AAE59E /* wells.png in Resources */,
 				ED49116D16F00EAE00AAE59E /* wharton.png in Resources */,
 				ED49116E16F00EAE00AAE59E /* williams.png in Resources */,
+				EDF061F418E2389F006294A3 /* auditorium2.gpx in Resources */,
 				ED49116F16F00EAE00AAE59E /* willshouse.png in Resources */,
 				ED49117016F00EAE00AAE59E /* wilson.png in Resources */,
 				ED49117116F00EAE00AAE59E /* wonders.png in Resources */,

@@ -49,6 +49,18 @@
     [super tearDown];
 }
 
+// test angle function
+- (void) testAngle
+{
+    CGPoint mid = CGPointMake(1.0,0.0);
+    CGPoint aPoint = CGPointMake(0.0,0.0);
+    CGPoint bPoint = CGPointMake(1.0,1.0);
+    
+    CGFloat bearing = [segHelper getBearingFrom:aPoint intersect:mid to:bPoint];
+    CGFloat bearing2 = [segHelper getBearingFrom:bPoint intersect:mid to:aPoint];
+    if (fabs(360-bearing-bearing2) > 1) STFail(@"Wrong angle bearing");
+}
+
 // test checkMidPoint function
 - (void)testMidPoint
 {

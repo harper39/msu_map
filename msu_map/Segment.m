@@ -142,11 +142,19 @@ const float MergeAngleThreshold = 15.0;
     return pointsArray;
 }
 
+
+// Return number of points in the path
+- (int) pathCount
+{
+    return [pointsArray count];
+}
+
 // Return the total length of this segment
 - (double) getLength
 {
     return [pathLength doubleValue];
 }
+
 
 // Return the path length till index
 - (double) getLengthTillIndex: (int) i

@@ -20,8 +20,8 @@
 // Constructor with content of the json query
 - (id) initWithContent: (NSDictionary*) content;
 
-// get current path from segments and current location
-- (NSArray*) getCurrentPath;
+// get current path from segments till just before current location
+- (NSArray*) getPathWithoutCurrentLocation;
 
 // Return an array of all segments
 - (NSArray*) getAllSegments;
