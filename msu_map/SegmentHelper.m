@@ -18,10 +18,7 @@ const float MidPointAngleThreshold = 15.0;
 const double ConvertFromWGS84ToFeet = 271010.052;
 
 // Distance Threshold for considering two points are the same
-const double DistanceThresHold = 5.0;
-
-// Distance Ratio for considering points on the same line
-const double MaxDistanceRatio = 0.1;
+const double DistanceThresHold = 15.0;
 
 // Compute the bearing using three points
 - (CGFloat) getBearingFrom:(CGPoint)startPoint intersect:(CGPoint)intersection to:(CGPoint)endPoint
@@ -50,8 +47,8 @@ const double MaxDistanceRatio = 0.1;
 - (BOOL) checkMidPoint:(CGPoint) midPoint between:(CGPoint) aPoint and:(CGPoint) bPoint
 {
     // check to see if midPoint is the same as aPoint or bPoint
-    if (CGPointEqualToPoint(midPoint, aPoint)) return true;
-    if (CGPointEqualToPoint(midPoint, bPoint)) return true;
+    if ([self isTooClosePoint:midPoint point2:aPoint]) return true;
+    if ([self isTooClosePoint:midPoint point2:bPoint]) return true;
     
     // Test angle between the points
     CGFloat bearing = [self getBearingFrom:aPoint intersect:midPoint to:bPoint];
@@ -75,7 +72,6 @@ const double MaxDistanceRatio = 0.1;
         // The distance difference between the two sides and the mid side
         double distDifference = fabs(sideA + sideB - sideMid);
         if (distDifference < DistanceThresHold) return true;
-        if ((distDifference / sideMid) < MaxDistanceRatio) return true;
     }
     
     return false;
@@ -126,6 +122,14 @@ const double MaxDistanceRatio = 0.1;
                 andLat: (double const) lat2 long: (double const) long2
 {
     double dist = [self computeDistanceWithLat:lat1 long:long1 andLat:lat2 long:long2];
+    return dist <= DistanceThresHold;
+}
+
+// Consider whether two WGS84 points are too close to each other or not
+// \return true if the distance between the points are less than threshold
+- (bool) isTooClosePoint: (CGPoint) aPoint point2: (CGPoint) bPoint
+{
+    double dist = [self computeDistanceWithLat:aPoint.x long:aPoint.y andLat:bPoint.x long:bPoint.y];
     return dist <= DistanceThresHold;
 }
 

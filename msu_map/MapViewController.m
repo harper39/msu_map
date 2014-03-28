@@ -163,7 +163,7 @@ const double DistanceThreshold = 0.0005;
     
     NSArray* path = nil;
     
-    if (segHandler && [segHandler getCurrentPath])
+    if (segHandler && [segHandler getPathWithoutCurrentLocation])
     {
         [self addColorfulSegmentToMap];
         path = nil;
@@ -236,7 +236,7 @@ const double DistanceThreshold = 0.0005;
         case NoAction:
         default:
             [self updateStatus:[dirGiver directionString]];
-            NSArray* path = [segHandler getCurrentPath];
+            NSArray* path = [segHandler getPathWithoutCurrentLocation];
             [self addPathToMap:path];
             break;
     }

@@ -38,4 +38,8 @@
 - (bool) isTooCloseLat: (double const) lat1 long: (double const) long1
                 andLat: (double const) lat2 long: (double const) long2;
 
+// Consider whether two WGS84 points are too close to each other or not
+// \return true if the distance between the points are less than threshold
+- (bool) isTooClosePoint: (CGPoint) aPoint point2: (CGPoint) bPoint;
+
 @end

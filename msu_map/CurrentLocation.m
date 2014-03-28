@@ -13,7 +13,7 @@
 @implementation CurrentLocation {
 	CLLocationManager *locationManager;
 }
- 
+
 // Destructor
 - (void) dealloc
 {
@@ -24,7 +24,7 @@
 - (void) Start{
     // Create the location manager if this object does not
     // already have one.
-    if (nil == locationManager)
+    if (locationManager == nil)
         locationManager = [[CLLocationManager alloc] init];
     
     locationManager.delegate = self;
