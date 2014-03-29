@@ -56,6 +56,7 @@
 		ED8E567116FD45DF00D867A2 /* build_master.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED8E567016FD45DF00D867A2 /* build_master.txt */; };
 		ED9741EA17274534007DF6DE /* notWorkingBuilding.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED9741E917274534007DF6DE /* notWorkingBuilding.txt */; };
 		ED99C2B51715F7340069A11E /* GoogleMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ED99C2B41715F7340069A11E /* GoogleMaps.m */; };
+		EDE973E918E68A9D00943886 /* building_sorted.txt in Resources */ = {isa = PBXBuildFile; fileRef = EDE973E818E68A9D00943886 /* building_sorted.txt */; };
 		EDEC8E8618C9195E008230EA /* auditorium.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDEC8E8518C9195E008230EA /* auditorium.gpx */; };
 		EDEC8E8818C91B16008230EA /* auditoriumDoor.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */; };
 		EDF061F418E2389F006294A3 /* auditorium2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDF061F318E2389F006294A3 /* auditorium2.gpx */; };
@@ -269,6 +270,7 @@
 		ED9741E917274534007DF6DE /* notWorkingBuilding.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notWorkingBuilding.txt; sourceTree = "<group>"; };
 		ED99C2B31715F7340069A11E /* GoogleMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMaps.h; sourceTree = "<group>"; };
 		ED99C2B41715F7340069A11E /* GoogleMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMaps.m; sourceTree = "<group>"; };
+		EDE973E818E68A9D00943886 /* building_sorted.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building_sorted.txt; sourceTree = "<group>"; };
 		EDEC8E8518C9195E008230EA /* auditorium.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditorium.gpx; sourceTree = "<group>"; };
 		EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditoriumDoor.gpx; sourceTree = "<group>"; };
 		EDF061F318E2389F006294A3 /* auditorium2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditorium2.gpx; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 		24DFD1EB16530D100034646D /* text */ = {
 			isa = PBXGroup;
 			children = (
+				EDE973E818E68A9D00943886 /* building_sorted.txt */,
 				ED18363118C78F0F000C5FCF /* sampleQuery.txt */,
 				ED9741E917274534007DF6DE /* notWorkingBuilding.txt */,
 				ED8E566E16FD457700D867A2 /* buildings_backup.txt */,
@@ -975,6 +978,7 @@
 				EDF2DDA618E60CC900F6C55C /* engineering.png in Resources */,
 				ED756C891836F8E3007522DB /* icon57.png in Resources */,
 				EDF2DDDA18E60CC900F6C55C /* olin.png in Resources */,
+				EDE973E918E68A9D00943886 /* building_sorted.txt in Resources */,
 				EDF2DDD318E60CC900F6C55C /* natural_resources.png in Resources */,
 				ED756C901836FA65007522DB /* icon114.png in Resources */,
 				ED756C8D1836F970007522DB /* icon60.png in Resources */,

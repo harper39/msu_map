@@ -11,7 +11,7 @@
 // file name should not contain the extension (just the way xcode work)
 // Building list file
 // the default extension is txt
-#define BuildingFile @"build_master"
+#define BuildingFile @"building_sorted"
 
 // file name should not contain the extension (just the way xcode work)
 // Exception building o be ignored

@@ -17,6 +17,7 @@
 @implementation BuildingTableViewController{
     BuildingSystem *buildings;
     NSArray* searchResults;
+    int indexList[26]; // List of index 'A' to row index
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -40,6 +41,28 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.delegate = self;
     buildings = [[BuildingSystem alloc] init];
+    
+    
+    // Make index list, i.e. map letter 'A' to its first appearance in the table
+    unichar prevLetter = 'A';
+    int count = 0;
+    indexList[count] = 0;
+    for (int i=0; i<buildings.getBuildings.count; i++)
+    {
+        unichar currLetter = [[[[buildings.getBuildings objectAtIndex:i] commonName] uppercaseString] characterAtIndex:0];
+        if (prevLetter < currLetter)
+        {
+            for (int j=prevLetter;j<currLetter;j++)
+            {
+                count++;
+                indexList[count] = i;
+            }
+            prevLetter = currLetter;
+        }
+    }
+    
+    // For some of the the last letter that didn't get count
+    for (int i=count+1; i<26; i++) indexList[i] = buildings.getBuildings.count;
 }
 
 - (void)didReceiveMemoryWarning
@@ -195,4 +218,16 @@ shouldReloadTableForSearchString:(NSString *)searchString
     }
 }
 
+// Array for index titles of the right scroll bar
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return[NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
+}
+
+// Get the index of the row that match the title to the right scroll bar
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:indexList[index] inSection:0];
+    [tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    
+    return index;
+}
 @end
