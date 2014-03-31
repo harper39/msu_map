@@ -96,9 +96,12 @@ const double DistanceThresHold = 15.0;
 - (double) computePathDistance: (NSArray*) path
 {
     double dist = 0;
-    if (path.count <=2 || path.count % 2 == 1)
+    if (path.count % 2 == 1)
     {
-        NSLog(@"Invalid input length %d", path.count);
+        NSLog(@"Error when computing path length: Invalid input length %d", path.count);
+        return 0;
+    }
+    if (path.count <=2) {
         return 0;
     }
     double prevLat = [[path objectAtIndex:0] doubleValue];

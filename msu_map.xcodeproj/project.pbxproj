@@ -56,6 +56,8 @@
 		ED8E567116FD45DF00D867A2 /* build_master.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED8E567016FD45DF00D867A2 /* build_master.txt */; };
 		ED9741EA17274534007DF6DE /* notWorkingBuilding.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED9741E917274534007DF6DE /* notWorkingBuilding.txt */; };
 		ED99C2B51715F7340069A11E /* GoogleMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ED99C2B41715F7340069A11E /* GoogleMaps.m */; };
+		EDDE25B918EA22FB00D0B6E7 /* bessey.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDDE25B818EA22FB00D0B6E7 /* bessey.gpx */; };
+		EDDE25BB18EA261500D0B6E7 /* besseyDoor.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDDE25BA18EA261500D0B6E7 /* besseyDoor.gpx */; };
 		EDE973E918E68A9D00943886 /* building_sorted.txt in Resources */ = {isa = PBXBuildFile; fileRef = EDE973E818E68A9D00943886 /* building_sorted.txt */; };
 		EDEC8E8618C9195E008230EA /* auditorium.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDEC8E8518C9195E008230EA /* auditorium.gpx */; };
 		EDEC8E8818C91B16008230EA /* auditoriumDoor.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */; };
@@ -270,6 +272,8 @@
 		ED9741E917274534007DF6DE /* notWorkingBuilding.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notWorkingBuilding.txt; sourceTree = "<group>"; };
 		ED99C2B31715F7340069A11E /* GoogleMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMaps.h; sourceTree = "<group>"; };
 		ED99C2B41715F7340069A11E /* GoogleMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMaps.m; sourceTree = "<group>"; };
+		EDDE25B818EA22FB00D0B6E7 /* bessey.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bessey.gpx; sourceTree = "<group>"; };
+		EDDE25BA18EA261500D0B6E7 /* besseyDoor.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = besseyDoor.gpx; sourceTree = "<group>"; };
 		EDE973E818E68A9D00943886 /* building_sorted.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building_sorted.txt; sourceTree = "<group>"; };
 		EDEC8E8518C9195E008230EA /* auditorium.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditorium.gpx; sourceTree = "<group>"; };
 		EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = auditoriumDoor.gpx; sourceTree = "<group>"; };
@@ -607,6 +611,8 @@
 				ED756C951836FBF0007522DB /* beaumontTower.gpx */,
 				EDEC8E8518C9195E008230EA /* auditorium.gpx */,
 				EDF061F318E2389F006294A3 /* auditorium2.gpx */,
+				EDDE25B818EA22FB00D0B6E7 /* bessey.gpx */,
+				EDDE25BA18EA261500D0B6E7 /* besseyDoor.gpx */,
 				EDEC8E8718C91B16008230EA /* auditoriumDoor.gpx */,
 				ED756C971836FCE3007522DB /* engineeringBuilding.gpx */,
 			);
@@ -968,10 +974,12 @@
 				EDF2DD8518E60CC900F6C55C /* alumni_chapel.png in Resources */,
 				EDF2DD9118E60CC900F6C55C /* biomedical_physical_science.png in Resources */,
 				EDF2DDF318E60CC900F6C55C /* svillage_comcenter.png in Resources */,
+				EDDE25B918EA22FB00D0B6E7 /* bessey.gpx in Resources */,
 				EDF2DD8218E60CC900F6C55C /* abrams.png in Resources */,
 				EDF2DD8C18E60CC900F6C55C /* beal_garden.png in Resources */,
 				EDF2DDDB18E60CC900F6C55C /* owen.png in Resources */,
 				ED18363218C78F0F000C5FCF /* sampleQuery.txt in Resources */,
+				EDDE25BB18EA261500D0B6E7 /* besseyDoor.gpx in Resources */,
 				EDF2DDF918E60CC900F6C55C /* vanhoosen.png in Resources */,
 				EDF2DE0018E60CC900F6C55C /* wilson.png in Resources */,
 				EDF2DDF818E60CC900F6C55C /* uvillage.png in Resources */,
