@@ -57,7 +57,13 @@
     if (currSegInx >= 0) {
         pathInx += currPointInx;
     }
-    return [pathArray subarrayWithRange:NSMakeRange(0, pathInx)];
+    
+    assert(pathInx % 2 == 1);
+    if (pathInx >= pathArray.count-1) {
+        NSLog(@"I skewed up: Path index too big: %d", pathInx);
+        pathInx = pathArray.count-2;
+    }
+    return [pathArray subarrayWithRange:NSMakeRange(0, pathInx+2)];
 }
 
 // Return the segment array

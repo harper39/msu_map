@@ -114,10 +114,6 @@ const float MergeAngleThreshold = 15.0;
 - (int) findIndexOfLat: (NSNumber*) latitude
                   long: (NSNumber*) longitude
 {
-    if ([segHelper isTooCloseLat:[latitude doubleValue] long:[longitude doubleValue]
-                          andLat:[[pointsArray objectAtIndex:1] doubleValue] long:[[pointsArray objectAtIndex:0] doubleValue]])
-        return 0;
-    
     int i = [pointsArray count] - 1;
     CGPoint midPoint = CGPointMake([latitude floatValue], [longitude floatValue]);
     CGPoint prevPoint = CGPointMake([[pointsArray objectAtIndex:i] floatValue], [[pointsArray objectAtIndex:i-1] floatValue]);

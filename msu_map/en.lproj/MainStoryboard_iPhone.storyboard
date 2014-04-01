@@ -90,7 +90,7 @@
             </objects>
             <point key="canvasLocation" x="181" y="571"/>
         </scene>
-        <!--Building Table View Controller - Item-->
+        <!--Building Table View Controller - Choose your destination-->
         <scene sceneID="PDw-A6-BIP">
             <objects>
                 <tableViewController id="cVB-iO-ARj" customClass="BuildingTableViewController" sceneMemberID="viewController">
@@ -125,7 +125,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="ARL-1V-WLY"/>
-                    <navigationItem key="navigationItem" id="64I-Xo-ZYQ"/>
+                    <navigationItem key="navigationItem" title="Choose your destination" id="64I-Xo-ZYQ"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="crk-pD-wQ7" id="xfg-oL-Odz"/>
                     </connections>

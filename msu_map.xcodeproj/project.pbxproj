@@ -22,10 +22,6 @@
 		24EC522816275786008D9BBF /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522616275786008D9BBF /* MainStoryboard_iPhone.storyboard */; };
 		24EC522B16275786008D9BBF /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522916275786008D9BBF /* MainStoryboard_iPad.storyboard */; };
 		24EC522E16275786008D9BBF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC522D16275786008D9BBF /* MapViewController.m */; };
-		24EC523016275786008D9BBF /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522F16275786008D9BBF /* first.png */; };
-		24EC523216275786008D9BBF /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC523116275786008D9BBF /* first@2x.png */; };
-		24EC523716275786008D9BBF /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC523616275786008D9BBF /* second.png */; };
-		24EC523916275786008D9BBF /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC523816275786008D9BBF /* second@2x.png */; };
 		24EC524116275786008D9BBF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC524016275786008D9BBF /* SenTestingKit.framework */; };
 		24EC524216275786008D9BBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC520E16275786008D9BBF /* UIKit.framework */; };
 		24EC524316275786008D9BBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC521016275786008D9BBF /* Foundation.framework */; };
@@ -230,10 +226,6 @@
 		24EC522A16275786008D9BBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		24EC522C16275786008D9BBF /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		24EC522D16275786008D9BBF /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		24EC522F16275786008D9BBF /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		24EC523116275786008D9BBF /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		24EC523616275786008D9BBF /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		24EC523816275786008D9BBF /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		24EC523F16275786008D9BBF /* msu_mapTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = msu_mapTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24EC524016275786008D9BBF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		24EC524816275786008D9BBF /* msu_mapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "msu_mapTests-Info.plist"; sourceTree = "<group>"; };
@@ -623,14 +615,10 @@
 			isa = PBXGroup;
 			children = (
 				24EC521516275786008D9BBF /* Supporting Files */,
-				24EC522F16275786008D9BBF /* first.png */,
-				24EC523116275786008D9BBF /* first@2x.png */,
 				24EC521D16275786008D9BBF /* AppDelegate.h */,
 				24EC521E16275786008D9BBF /* AppDelegate.m */,
 				24EC522616275786008D9BBF /* MainStoryboard_iPhone.storyboard */,
 				24EC522916275786008D9BBF /* MainStoryboard_iPad.storyboard */,
-				24EC523616275786008D9BBF /* second.png */,
-				24EC523816275786008D9BBF /* second@2x.png */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -906,7 +894,6 @@
 				EDF2DDB518E60CC900F6C55C /* hannah.png in Resources */,
 				EDF2DDB618E60CC900F6C55C /* holden.png in Resources */,
 				EDF2DDFD18E60CC900F6C55C /* wharton.png in Resources */,
-				24EC523016275786008D9BBF /* first.png in Resources */,
 				EDF2DD9B18E60CC900F6C55C /* college_of_law.png in Resources */,
 				EDF2DDF018E60CC900F6C55C /* stadium.png in Resources */,
 				EDF2DDD118E60CC900F6C55C /* music_practice.png in Resources */,
@@ -920,8 +907,6 @@
 				EDF2DDF618E60CC900F6C55C /* tennis1.png in Resources */,
 				EDF2DD8A18E60CC900F6C55C /* baker.png in Resources */,
 				EDF2DDD018E60CC900F6C55C /* museum.png in Resources */,
-				24EC523216275786008D9BBF /* first@2x.png in Resources */,
-				24EC523716275786008D9BBF /* second.png in Resources */,
 				ED756C8C1836F970007522DB /* icon58.png in Resources */,
 				EDF2DDF118E60CC900F6C55C /* student.png in Resources */,
 				EDF2DDE318E60CC900F6C55C /* plantsys.png in Resources */,
@@ -930,7 +915,6 @@
 				EDF2DDDE18E60CC900F6C55C /* phillips.png in Resources */,
 				EDF2DDC618E60CC900F6C55C /* library.png in Resources */,
 				EDF2DD8418E60CC900F6C55C /* akers.png in Resources */,
-				24EC523916275786008D9BBF /* second@2x.png in Resources */,
 				EDF2DDD218E60CC900F6C55C /* music.png in Resources */,
 				EDF2DD9018E60CC900F6C55C /* biochem.png in Resources */,
 				EDF2DDBA18E60CC900F6C55C /* ic_dictionary.png in Resources */,

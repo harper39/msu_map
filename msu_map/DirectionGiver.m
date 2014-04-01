@@ -36,6 +36,9 @@ static NSString* FarFinalFormatString= @"Reach your destination in %d feet";
 // format string used when the user reach the final destination
 static NSString* EndPathString= @"You have reached your destination";
 
+// String used when the user is on a wrong path
+static NSString* WrongPathString= @"Wrong path";
+
 // Distance consider to be "close" to the intersection
 const double CloseDistanceThreshold = 40.0;
 
@@ -48,7 +51,7 @@ const double NowDistanceThreshold = 15.0;
     segHandler = aSegHandler;
     segHelper = [SegmentHelper alloc];
     currSegInx = [[segHandler getAllSegments] count] - 1;
-    currPointInx = [[[[segHandler getAllSegments] lastObject] getPath] count] - 1;
+    currPointInx = [[[[segHandler getAllSegments] lastObject] getPath] count] - 3;
     directionString = @"Direction not ready";
     currLat = 0;
     currLong = 0;
@@ -98,19 +101,11 @@ const double NowDistanceThreshold = 15.0;
         // found something
         currPointInx = newPointInx;
         currSegInx = newSegInx;
-        [self updateDirectionWithSegment];
-        return UpdateStatusBar;
-    }
-    else if (newPointInx == 0)
-    {
-        directionString = @"End segment";
-        currSegInx = newSegInx;
-        currPointInx = 1;
-        [self updateDirectionWithSegment];
-        return ChangePath;
+        return [self updateDirectionWithSegment];
     }
     else {
-        directionString = @"Wrong path";
+        // did not find the point
+        directionString = WrongPathString;
         return ChangePath;
     }
     
@@ -136,7 +131,7 @@ const double NowDistanceThreshold = 15.0;
 }
 
 // update direction string based on current Segment
-- (void) updateDirectionWithSegment
+- (UpdateState) updateDirectionWithSegment
 {
     assert(currPointInx >= 1);
     Segment* currSeg = [[segHandler getAllSegments] objectAtIndex:currSegInx];
@@ -151,6 +146,7 @@ const double NowDistanceThreshold = 15.0;
     segLength += [segHelper computeDistanceWithLat:endLat long:endLong
                                             andLat:[currLat doubleValue] long:[currLong doubleValue]];
     
+    UpdateState flag = UpdateStatusBar;
     
     if (currSegInx == 0) {
         // we are at the last segment
@@ -165,6 +161,7 @@ const double NowDistanceThreshold = 15.0;
         if (segLength < NowDistanceThreshold) {
             // we arrive at the destination
             directionString = EndPathString;
+            flag = EndPath;
         }
     }
     else if (prevDistance < 0) {
@@ -179,8 +176,10 @@ const double NowDistanceThreshold = 15.0;
         // we transit from close to now distance
         directionString = [[NSString alloc] initWithFormat:NowFormatString, bearing];
     }
-    else; // do nothing == don't update the direction string
+    else flag = NoAction; // do nothing == don't update the direction string
     prevDistance = segLength;
+    
+    return flag;
 }
 
 @end
