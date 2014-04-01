@@ -16,9 +16,6 @@
 		24EC521916275786008D9BBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24EC521716275786008D9BBF /* InfoPlist.strings */; };
 		24EC521B16275786008D9BBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC521A16275786008D9BBF /* main.m */; };
 		24EC521F16275786008D9BBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC521E16275786008D9BBF /* AppDelegate.m */; };
-		24EC522116275786008D9BBF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522016275786008D9BBF /* Default.png */; };
-		24EC522316275786008D9BBF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522216275786008D9BBF /* Default@2x.png */; };
-		24EC522516275786008D9BBF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522416275786008D9BBF /* Default-568h@2x.png */; };
 		24EC522816275786008D9BBF /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522616275786008D9BBF /* MainStoryboard_iPhone.storyboard */; };
 		24EC522B16275786008D9BBF /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522916275786008D9BBF /* MainStoryboard_iPad.storyboard */; };
 		24EC522E16275786008D9BBF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC522D16275786008D9BBF /* MapViewController.m */; };
@@ -219,9 +216,6 @@
 		24EC521C16275786008D9BBF /* msu_map-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "msu_map-Prefix.pch"; sourceTree = "<group>"; };
 		24EC521D16275786008D9BBF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		24EC521E16275786008D9BBF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		24EC522016275786008D9BBF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		24EC522216275786008D9BBF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		24EC522416275786008D9BBF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		24EC522716275786008D9BBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		24EC522A16275786008D9BBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		24EC522C16275786008D9BBF /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -524,9 +518,6 @@
 				24EC521716275786008D9BBF /* InfoPlist.strings */,
 				24EC521A16275786008D9BBF /* main.m */,
 				24EC521C16275786008D9BBF /* msu_map-Prefix.pch */,
-				24EC522016275786008D9BBF /* Default.png */,
-				24EC522216275786008D9BBF /* Default@2x.png */,
-				24EC522416275786008D9BBF /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -838,12 +829,10 @@
 				EDF2DDFA18E60CC900F6C55C /* vetmed.png in Resources */,
 				24EC521916275786008D9BBF /* InfoPlist.strings in Resources */,
 				EDF2DDC818E60CC900F6C55C /* linton.png in Resources */,
-				24EC522116275786008D9BBF /* Default.png in Resources */,
 				EDF2DD8B18E60CC900F6C55C /* bcc.png in Resources */,
 				EDF2DD9C18E60CC900F6C55C /* communication.png in Resources */,
 				EDF2DD9918E60CC900F6C55C /* chittenden.png in Resources */,
 				EDF2DD9718E60CC900F6C55C /* centralserv.png in Resources */,
-				24EC522316275786008D9BBF /* Default@2x.png in Resources */,
 				EDF2DDE918E60CC900F6C55C /* simonpp.png in Resources */,
 				EDF2DDCA18E60CC900F6C55C /* marshall_adams.png in Resources */,
 				EDF2DD8318E60CC900F6C55C /* agriculture.png in Resources */,
@@ -853,7 +842,6 @@
 				EDF2DDD618E60CC900F6C55C /* observatory.png in Resources */,
 				EDF2DD8918E60CC900F6C55C /* bailey_hall.png in Resources */,
 				EDF2DD8618E60CC900F6C55C /* angell.png in Resources */,
-				24EC522516275786008D9BBF /* Default-568h@2x.png in Resources */,
 				EDF2DDED18E60CC900F6C55C /* spartan2.png in Resources */,
 				EDF2DDB718E60CC900F6C55C /* holmes.png in Resources */,
 				EDF2DD9618E60CC900F6C55C /* case_hall.png in Resources */,
