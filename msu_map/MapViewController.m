@@ -208,7 +208,7 @@ const double DistanceThreshold = 0.0005;
                            [UIColor greenColor], [UIColor blueColor], [UIColor blackColor], nil];
     for (int i=0; i<[segArray count]; i++)
     {
-        [mapView addOverlayArray: [[segArray objectAtIndex:i] getPath] :[colorArray objectAtIndex:(i%6)]];
+        [mapView addOverlayArray: [[segArray objectAtIndex:i] getPath] color:[colorArray objectAtIndex:(i%6)]];
     }
 }
 
@@ -229,18 +229,22 @@ const double DistanceThreshold = 0.0005;
 {
     DirectionGiver* dirGiver = [segHandler dirGiver];
     UpdateState flag = [dirGiver updateLocationLatitude:[currLoc latitude] longitude:[currLoc longitude]];
-
+    NSArray* path = nil;
+    
     switch (flag) {
         case UpdateStatusBar:
-        case ChangePath:
-        case NoAction:
-        default:
             [self updateStatus:[dirGiver directionString]];
-            NSArray* path = [segHandler getPathWithoutCurrentLocation];
+        case KeepStatusBar:
+            path = [segHandler getPathWithoutCurrentLocation];
             [self addPathToMap:path];
             break;
+            
+        case DeviatedFromPath:
+        case EndPath:
+        default:
+            [self updateStatus:[dirGiver directionString]];
+            break;
     }
-    
 }
 
 @end

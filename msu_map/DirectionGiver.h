@@ -20,8 +20,8 @@
 
 typedef NS_ENUM(NSInteger, UpdateState) {
     UpdateStatusBar, // should update the status bar with new direction
-    NoAction, // no action necessary
-    ChangePath, // significant deviation from original path, need to query the server again
+    KeepStatusBar, // do not update status bar
+    DeviatedFromPath, // significant deviation from original path, need to query the server again
     EndPath // reach the destination
 };
 

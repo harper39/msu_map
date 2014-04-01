@@ -44,7 +44,7 @@
     
     parent = window;
     annotations = [[NSMutableArray alloc] init];
-    mColor = nil;
+    mColor = [UIColor blueColor];
     return self;
 }
 
@@ -93,25 +93,25 @@
 // to the existing map view
 - (void) addOverlayArray: (NSArray *) path
 {
-    if (mColor == nil) mColor = [UIColor blueColor]; // default path color is blue color
+    [self addOverlayArray:path color:[UIColor blueColor]];
+}
+
+// Add an overlay of route with color
+- (void) addOverlayArray:(NSArray *)path color:(UIColor *)color
+{
+    mColor = color;
+
+    if (path.count % 2 == 1) NSLog(@"Warning when adding path to map: Odd path count: %i", [path count]);
     
     CLLocationCoordinate2D pathCoords[[path count]/2];
-    //NSLog(@"[path count]: %i", [path count]);
+    
     
     for(int i=0; i<[path count]/2; i++)
         pathCoords[i] = CLLocationCoordinate2DMake([[path objectAtIndex:2*i+1] doubleValue], [[path objectAtIndex:2*i] doubleValue]);
     
     MKPolyline* pathPolyline = [MKPolyline polylineWithCoordinates:pathCoords count:[path count]/2];
-
+    
     [mapView addOverlay:pathPolyline];
-    mColor = nil;
-}
-
-// Add an overlay of route with color
-- (void) addOverlayArray:(NSArray *)path :(UIColor *)color
-{
-    mColor = color;
-    [self addOverlayArray:path];
 }
 
 // Redraw the route
@@ -137,7 +137,7 @@
     theCoordinate.longitude = [longitude doubleValue];
     point.coordinate = theCoordinate;
     point.title = text;
-    //point.subtitle = @"I'm here!!!";
+
     [mapView addAnnotation:point];
     [annotations addObject:point];
 }

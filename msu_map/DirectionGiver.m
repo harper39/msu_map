@@ -37,7 +37,7 @@ static NSString* FarFinalFormatString= @"Reach your destination in %d feet";
 static NSString* EndPathString= @"You have reached your destination";
 
 // String used when the user is on a wrong path
-static NSString* WrongPathString= @"Wrong path";
+static NSString* WrongPathString= @"You seem to be on the wrong path";
 
 // Distance consider to be "close" to the intersection
 const double CloseDistanceThreshold = 40.0;
@@ -106,10 +106,10 @@ const double NowDistanceThreshold = 15.0;
     else {
         // did not find the point
         directionString = WrongPathString;
-        return ChangePath;
+        return DeviatedFromPath;
     }
     
-    return NoAction;
+    return KeepStatusBar;
 }
 
 // index of segment the current location is on right now
@@ -154,29 +154,30 @@ const double NowDistanceThreshold = 15.0;
             // We are in a new segment
             directionString = [[NSString alloc] initWithFormat:FarFinalFormatString, (int)segLength];
         }
-        else if (prevDistance > CloseDistanceThreshold && segLength < CloseDistanceThreshold) {
+        else if (prevDistance >= CloseDistanceThreshold && segLength < CloseDistanceThreshold) {
             // we transit from far to close distance
             directionString = [[NSString alloc] initWithFormat:FarFinalFormatString, (int)CloseDistanceThreshold];
         }
-        if (segLength < NowDistanceThreshold) {
+        else if (segLength < NowDistanceThreshold) {
             // we arrive at the destination
             directionString = EndPathString;
             flag = EndPath;
         }
+        else flag = KeepStatusBar;
     }
     else if (prevDistance < 0) {
         // We are in a new segment
         directionString = [[NSString alloc] initWithFormat:FarFormatString, (int)segLength, bearing];
     }
-    else if (prevDistance > CloseDistanceThreshold && segLength < CloseDistanceThreshold) {
+    else if (prevDistance >= CloseDistanceThreshold && segLength < CloseDistanceThreshold) {
         // we transit from far to close distance
         directionString = [[NSString alloc] initWithFormat:FarFormatString, (int)CloseDistanceThreshold, bearing];
     }
-    else if (prevDistance > NowDistanceThreshold && segLength < NowDistanceThreshold) {
+    else if (prevDistance >= NowDistanceThreshold && segLength < NowDistanceThreshold) {
         // we transit from close to now distance
         directionString = [[NSString alloc] initWithFormat:NowFormatString, bearing];
     }
-    else flag = NoAction; // do nothing == don't update the direction string
+    else flag = KeepStatusBar; // do nothing == don't update the direction string
     prevDistance = segLength;
     
     return flag;
