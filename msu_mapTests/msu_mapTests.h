@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Minh Pham. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface msu_mapTests : SenTestCase
+@interface msu_mapTests : XCTestCase
 
 @end

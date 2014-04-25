@@ -13,14 +13,16 @@
 
 @property (strong) NSString* name;
 @property (strong) NSString* type;
+@property (readonly) double pathLength;
 @property CGFloat bearingToNextSegment;
+@property NSArray* pointsArray;
 
 // init with properly format json object
 - (id) initWithJSON: (NSDictionary*) json;
 
 // init with all properties
 - (id) initWithPath: (NSArray*) aPath
-             length: (NSNumber*) aLength
+             length: (double) aLength
                name: (NSString*) aName
                type: (NSString*) aType;
 

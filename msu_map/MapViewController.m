@@ -10,6 +10,7 @@
 
 #import "MapViewController.h"
 #import "DirectionGiver.h"
+#import "MapSystem.h"
 
 // Distant consider as big enough to separate two point (use to
 // compare end point of path with current location)
@@ -80,7 +81,7 @@ const double DistanceThreshold = 0.0005;
         [self updateStatus:@"Retrieving path from server ..."];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self updateSegmentFromServer:buildingID lat:latitude long:longitude]; // 1
+            [self updateSegmentFromMapSystem:buildingID lat:latitude long:longitude]; // 1
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (segHandler)
                 {
@@ -148,6 +149,15 @@ const double DistanceThreshold = 0.0005;
      :longitude];
      */
     segHandler = [parse getTestSegment];
+    MapSystem* mapSys = [[MapSystem alloc] init];
+    segHandler = [mapSys findPathFromLatitude:[latitude doubleValue] longitude:[longitude doubleValue] toVertexInx:10];
+}
+
+// Get path array from map system
+- (void) updateSegmentFromMapSystem: (NSString*) buildingID lat: (NSNumber*) latitude long: (NSNumber*)longitude
+{
+    MapSystem* mapSys = [[MapSystem alloc] init];
+    segHandler = [mapSys findPathFromLatitude:[latitude doubleValue] longitude:[longitude doubleValue] toVertexInx:10];
 }
 
 // Get path array from server

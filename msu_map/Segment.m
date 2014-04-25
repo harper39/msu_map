@@ -11,28 +11,22 @@
 
 @implementation Segment {
     SegmentHelper* segHelper;
-    NSNumber* pathLength;
-    NSArray* pointsArray;
 }
-
-@synthesize type;
-@synthesize name;
-@synthesize bearingToNextSegment;
 
 // Angle deviation small enough to consider merging (in degree)
 const float MergeAngleThreshold = 15.0;
 
 // init with all properties
 - (id) initWithPath: (NSArray*) aPath
-             length: (NSNumber*) aLength
+             length: (double) aLength
                name: (NSString*) aName
                type: (NSString*) aType
 {
-    pointsArray = aPath;
-    pathLength = aLength;
-    name = aName;
-    type = aType;
-    bearingToNextSegment = 0.0;
+    _pointsArray = aPath;
+    _pathLength = aLength;
+    _name = aName;
+    _type = aType;
+    _bearingToNextSegment = 0.0;
     segHelper = [SegmentHelper alloc];
     
     return self;
@@ -40,11 +34,11 @@ const float MergeAngleThreshold = 15.0;
 
 -(id) initWithJSON: (NSDictionary*) json
 {
-    pathLength = [json objectForKey:@"LENGTH"];
-    type = [json objectForKey:@"TYPE"];
-    pointsArray = [json objectForKey:@"POINTS"];
-    name = [json objectForKey:@"NAME"];
-    bearingToNextSegment = 0.0;
+    _pathLength = [[json objectForKey:@"LENGTH"] doubleValue];
+    _type = [json objectForKey:@"TYPE"];
+    _pointsArray = [json objectForKey:@"POINTS"];
+    _name = [json objectForKey:@"NAME"];
+    _bearingToNextSegment = 0.0;
     segHelper = [SegmentHelper alloc];
     
     return self;
@@ -81,23 +75,24 @@ const float MergeAngleThreshold = 15.0;
 -(Segment*) mergeWithSegment: (Segment*) aSeg
 {
     // Array for type of segments that are mergeable
-    NSArray* MergeableSegmentTypes = [NSArray arrayWithObjects:@"SIDEWALK", @"CROSSWALK", nil];
+    //NSArray* MergeableSegmentTypes = [NSArray arrayWithObjects:@"SIDEWALK", @"CROSSWALK", @"PRIMARY", nil];
     
     if (aSeg == nil) return nil;
     CGFloat bearing = [self getBearingToSegment:aSeg];
     
     if (bearing >= (180 - MergeAngleThreshold) && bearing <= (180 + MergeAngleThreshold)) {
-        Segment* mainSeg = nil; // main segment to get type and name from
+        Segment* mainSeg = self; // main segment to get type and name from
+        /*
         if ([MergeableSegmentTypes containsObject:[aSeg type]]) mainSeg = self;
         else if ([MergeableSegmentTypes containsObject:[self type]] ) mainSeg = aSeg;
         else return nil;
+         */
         
         NSString* newType = [NSString stringWithString:[mainSeg type]];
         NSString* newName = [NSString stringWithString:[mainSeg name]];
-        NSNumber* newLength = [[NSNumber alloc] initWithDouble:[aSeg getLength] + [self getLength] ];
-        NSMutableArray* newPath = [[NSMutableArray alloc] init];
+        double newLength = [aSeg getLength] + [self getLength];
         
-        [newPath addObjectsFromArray:[self getPath]];
+        NSMutableArray* newPath = [[NSMutableArray alloc] initWithArray:[self getPath]];
         [newPath addObjectsFromArray:[[aSeg getPath] subarrayWithRange:NSMakeRange(2, [aSeg getPath].count-2)]];
         
         return [[Segment alloc] initWithPath:newPath length:newLength name:newName type:newType];
@@ -114,16 +109,16 @@ const float MergeAngleThreshold = 15.0;
 - (int) findIndexOfLat: (NSNumber*) latitude
                   long: (NSNumber*) longitude
 {
-    int i = [pointsArray count] - 1;
+    int i = (int)[_pointsArray count] - 1;
     CGPoint midPoint = CGPointMake([latitude floatValue], [longitude floatValue]);
-    CGPoint prevPoint = CGPointMake([[pointsArray objectAtIndex:i] floatValue], [[pointsArray objectAtIndex:i-1] floatValue]);
+    CGPoint prevPoint = CGPointMake([[_pointsArray objectAtIndex:i] floatValue], [[_pointsArray objectAtIndex:i-1] floatValue]);
     CGPoint currPoint;
     i -= 2;
     
     // Loop through the pointsArray
     while (i >= 1)
     {
-        currPoint = CGPointMake([[pointsArray objectAtIndex:i] floatValue], [[pointsArray objectAtIndex:i-1] floatValue]);
+        currPoint = CGPointMake([[_pointsArray objectAtIndex:i] floatValue], [[_pointsArray objectAtIndex:i-1] floatValue]);
         // if the point is in between a prevPoint and currPoint
         if ([segHelper checkMidPoint:midPoint between:prevPoint and:currPoint]) break;
         i -= 2;
@@ -135,20 +130,20 @@ const float MergeAngleThreshold = 15.0;
 // Return an array of lat long coordinates
 - (NSArray*) getPath
 {
-    return pointsArray;
+    return _pointsArray;
 }
 
 
 // Return number of points in the path
 - (int) pathCount
 {
-    return [pointsArray count];
+    return (int)[_pointsArray count];
 }
 
 // Return the total length of this segment
 - (double) getLength
 {
-    return [pathLength doubleValue];
+    return _pathLength;
 }
 
 
@@ -161,7 +156,7 @@ const float MergeAngleThreshold = 15.0;
 // Return an array of lat long coordinates
 - (NSArray*) getPathTillIndex:(int)i
 {
-    if (i >= [pointsArray count]) {
+    if (i >= [_pointsArray count]) {
         NSLog(@"Index out of range: %d", i);
         return nil;
     }
@@ -169,7 +164,7 @@ const float MergeAngleThreshold = 15.0;
         NSLog(@"Index should not be even %d",i );
         return nil;
     }
-    return [pointsArray subarrayWithRange:NSMakeRange(0, i+1)];
+    return [_pointsArray subarrayWithRange:NSMakeRange(0, i+1)];
 }
 
 @end

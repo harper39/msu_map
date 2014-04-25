@@ -101,7 +101,7 @@
 {
     mColor = color;
 
-    if (path.count % 2 == 1) NSLog(@"Warning when adding path to map: Odd path count: %i", [path count]);
+    if (path.count % 2 == 1) NSLog(@"Warning when adding path to map: Odd path count: %lu", (unsigned long)[path count]);
     
     CLLocationCoordinate2D pathCoords[[path count]/2];
     

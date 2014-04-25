@@ -17,7 +17,7 @@ const float MidPointAngleThreshold = 15.0;
 // Conversion constant from normal coordinate distance to feet
 const double ConvertFromWGS84ToFeet = 271010.052;
 
-// Distance Threshold for considering two points are the same
+// Distance Threshold for considering two points are the same (in feet)
 const double DistanceThresHold = 15.0;
 
 // Compute the bearing using three points
@@ -98,7 +98,7 @@ const double DistanceThresHold = 15.0;
     double dist = 0;
     if (path.count % 2 == 1)
     {
-        NSLog(@"Error when computing path length: Invalid input length %d", path.count);
+        NSLog(@"Error when computing path length: Invalid input length %lu", (unsigned long)path.count);
         return 0;
     }
     if (path.count <=2) {

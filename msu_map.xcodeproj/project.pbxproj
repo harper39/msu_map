@@ -19,7 +19,6 @@
 		24EC522816275786008D9BBF /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522616275786008D9BBF /* MainStoryboard_iPhone.storyboard */; };
 		24EC522B16275786008D9BBF /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EC522916275786008D9BBF /* MainStoryboard_iPad.storyboard */; };
 		24EC522E16275786008D9BBF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC522D16275786008D9BBF /* MapViewController.m */; };
-		24EC524116275786008D9BBF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC524016275786008D9BBF /* SenTestingKit.framework */; };
 		24EC524216275786008D9BBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC520E16275786008D9BBF /* UIKit.framework */; };
 		24EC524316275786008D9BBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EC521016275786008D9BBF /* Foundation.framework */; };
 		24EC524B16275786008D9BBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24EC524916275786008D9BBF /* InfoPlist.strings */; };
@@ -33,6 +32,10 @@
 		ED18363218C78F0F000C5FCF /* sampleQuery.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED18363118C78F0F000C5FCF /* sampleQuery.txt */; };
 		ED18363518C795E1000C5FCF /* SegmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED18363418C795E1000C5FCF /* SegmentHelper.m */; };
 		ED30707718B32B4700267171 /* DirectionGiver.m in Sources */ = {isa = PBXBuildFile; fileRef = ED30707618B32B4700267171 /* DirectionGiver.m */; };
+		ED3388CF190895F00031E14E /* map_system.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED3388CE190895F00031E14E /* map_system.txt */; };
+		ED3388D6190896C10031E14E /* MapVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388D5190896C10031E14E /* MapVertex.m */; };
+		ED3388D9190896D10031E14E /* MapEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388D8190896D10031E14E /* MapEdge.m */; };
+		ED3388DC190896E00031E14E /* MapSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388DB190896E00031E14E /* MapSystem.m */; };
 		ED49106F16F00DF300AAE59E /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = ED49106E16F00DF300AAE59E /* Building.m */; };
 		ED756C801836EE37007522DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED756C7F1836EE37007522DB /* AudioToolbox.framework */; };
 		ED756C821836F23C007522DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED756C811836F23C007522DB /* Images.xcassets */; };
@@ -49,6 +52,10 @@
 		ED8E567116FD45DF00D867A2 /* build_master.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED8E567016FD45DF00D867A2 /* build_master.txt */; };
 		ED9741EA17274534007DF6DE /* notWorkingBuilding.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED9741E917274534007DF6DE /* notWorkingBuilding.txt */; };
 		ED99C2B51715F7340069A11E /* GoogleMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ED99C2B41715F7340069A11E /* GoogleMaps.m */; };
+		ED9C4C3F19098A2C00AC5931 /* AStarPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9C4C3E19098A2C00AC5931 /* AStarPathFinder.m */; };
+		ED9C4C4219098B4600AC5931 /* MinHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9C4C4119098B4600AC5931 /* MinHeap.m */; };
+		EDDB560E1909747F00F73A1D /* pathFindingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDB560D1909747F00F73A1D /* pathFindingTest.m */; };
+		EDDB56101909880C00F73A1D /* map_system_with_adjacency_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = EDDB560F1909880C00F73A1D /* map_system_with_adjacency_list.txt */; };
 		EDDE25B918EA22FB00D0B6E7 /* bessey.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDDE25B818EA22FB00D0B6E7 /* bessey.gpx */; };
 		EDDE25BB18EA261500D0B6E7 /* besseyDoor.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EDDE25BA18EA261500D0B6E7 /* besseyDoor.gpx */; };
 		EDE973E918E68A9D00943886 /* building_sorted.txt in Resources */ = {isa = PBXBuildFile; fileRef = EDE973E818E68A9D00943886 /* building_sorted.txt */; };
@@ -220,8 +227,7 @@
 		24EC522A16275786008D9BBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		24EC522C16275786008D9BBF /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		24EC522D16275786008D9BBF /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		24EC523F16275786008D9BBF /* msu_mapTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = msu_mapTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24EC524016275786008D9BBF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		24EC523F16275786008D9BBF /* msu_mapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = msu_mapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24EC524816275786008D9BBF /* msu_mapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "msu_mapTests-Info.plist"; sourceTree = "<group>"; };
 		24EC524A16275786008D9BBF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24EC524C16275786008D9BBF /* msu_mapTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = msu_mapTests.h; sourceTree = "<group>"; };
@@ -241,6 +247,13 @@
 		ED18363418C795E1000C5FCF /* SegmentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentHelper.m; sourceTree = "<group>"; };
 		ED30707518B32B4700267171 /* DirectionGiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionGiver.h; sourceTree = "<group>"; };
 		ED30707618B32B4700267171 /* DirectionGiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionGiver.m; sourceTree = "<group>"; };
+		ED3388CE190895F00031E14E /* map_system.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map_system.txt; sourceTree = "<group>"; };
+		ED3388D4190896C10031E14E /* MapVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVertex.h; sourceTree = "<group>"; };
+		ED3388D5190896C10031E14E /* MapVertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVertex.m; sourceTree = "<group>"; };
+		ED3388D7190896D10031E14E /* MapEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapEdge.h; sourceTree = "<group>"; };
+		ED3388D8190896D10031E14E /* MapEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapEdge.m; sourceTree = "<group>"; };
+		ED3388DA190896E00031E14E /* MapSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSystem.h; sourceTree = "<group>"; };
+		ED3388DB190896E00031E14E /* MapSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSystem.m; sourceTree = "<group>"; };
 		ED49106E16F00DF300AAE59E /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 		ED756C7F1836EE37007522DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ED756C811836F23C007522DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -258,6 +271,12 @@
 		ED9741E917274534007DF6DE /* notWorkingBuilding.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notWorkingBuilding.txt; sourceTree = "<group>"; };
 		ED99C2B31715F7340069A11E /* GoogleMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMaps.h; sourceTree = "<group>"; };
 		ED99C2B41715F7340069A11E /* GoogleMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMaps.m; sourceTree = "<group>"; };
+		ED9C4C3D19098A2C00AC5931 /* AStarPathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AStarPathFinder.h; sourceTree = "<group>"; };
+		ED9C4C3E19098A2C00AC5931 /* AStarPathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AStarPathFinder.m; sourceTree = "<group>"; };
+		ED9C4C4019098B4600AC5931 /* MinHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinHeap.h; sourceTree = "<group>"; };
+		ED9C4C4119098B4600AC5931 /* MinHeap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinHeap.m; sourceTree = "<group>"; };
+		EDDB560D1909747F00F73A1D /* pathFindingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pathFindingTest.m; sourceTree = "<group>"; };
+		EDDB560F1909880C00F73A1D /* map_system_with_adjacency_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map_system_with_adjacency_list.txt; sourceTree = "<group>"; };
 		EDDE25B818EA22FB00D0B6E7 /* bessey.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bessey.gpx; sourceTree = "<group>"; };
 		EDDE25BA18EA261500D0B6E7 /* besseyDoor.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = besseyDoor.gpx; sourceTree = "<group>"; };
 		EDE973E818E68A9D00943886 /* building_sorted.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building_sorted.txt; sourceTree = "<group>"; };
@@ -417,7 +436,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24EC524116275786008D9BBF /* SenTestingKit.framework in Frameworks */,
 				24EC524216275786008D9BBF /* UIKit.framework in Frameworks */,
 				24EC524316275786008D9BBF /* Foundation.framework in Frameworks */,
 			);
@@ -456,6 +474,8 @@
 		24DFD1EB16530D100034646D /* text */ = {
 			isa = PBXGroup;
 			children = (
+				EDDB560F1909880C00F73A1D /* map_system_with_adjacency_list.txt */,
+				ED3388CE190895F00031E14E /* map_system.txt */,
 				EDE973E818E68A9D00943886 /* building_sorted.txt */,
 				ED18363118C78F0F000C5FCF /* sampleQuery.txt */,
 				ED9741E917274534007DF6DE /* notWorkingBuilding.txt */,
@@ -482,7 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				24EC520A16275786008D9BBF /* msu_map.app */,
-				24EC523F16275786008D9BBF /* msu_mapTests.octest */,
+				24EC523F16275786008D9BBF /* msu_mapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -494,7 +514,6 @@
 				24EC520E16275786008D9BBF /* UIKit.framework */,
 				24EC521016275786008D9BBF /* Foundation.framework */,
 				24EC521216275786008D9BBF /* CoreGraphics.framework */,
-				24EC524016275786008D9BBF /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -502,6 +521,7 @@
 		24EC521416275786008D9BBF /* msu_map */ = {
 			isa = PBXGroup;
 			children = (
+				ED3388D01908961C0031E14E /* pathFinding */,
 				EDF2DAF518E5EEF800F6C55C /* core */,
 				ED30707818B32B8800267171 /* segment */,
 				24DFD0C9164F677B0034646D /* Resources */,
@@ -525,6 +545,7 @@
 		24EC524616275786008D9BBF /* msu_mapTests */ = {
 			isa = PBXGroup;
 			children = (
+				EDDB560D1909747F00F73A1D /* pathFindingTest.m */,
 				ED18362F18C78E4E000C5FCF /* directionTest.m */,
 				24EC524C16275786008D9BBF /* msu_mapTests.h */,
 				24EC524D16275786008D9BBF /* msu_mapTests.m */,
@@ -572,6 +593,23 @@
 				EDFE91CE180096E200523DFD /* SegmentHandler.m */,
 			);
 			name = segment;
+			sourceTree = "<group>";
+		};
+		ED3388D01908961C0031E14E /* pathFinding */ = {
+			isa = PBXGroup;
+			children = (
+				ED3388D4190896C10031E14E /* MapVertex.h */,
+				ED3388D5190896C10031E14E /* MapVertex.m */,
+				ED3388D7190896D10031E14E /* MapEdge.h */,
+				ED3388D8190896D10031E14E /* MapEdge.m */,
+				ED3388DA190896E00031E14E /* MapSystem.h */,
+				ED3388DB190896E00031E14E /* MapSystem.m */,
+				ED9C4C3D19098A2C00AC5931 /* AStarPathFinder.h */,
+				ED9C4C3E19098A2C00AC5931 /* AStarPathFinder.m */,
+				ED9C4C4019098B4600AC5931 /* MinHeap.h */,
+				ED9C4C4119098B4600AC5931 /* MinHeap.m */,
+			);
+			name = pathFinding;
 			sourceTree = "<group>";
 		};
 		ED756C871836F819007522DB /* icon */ = {
@@ -786,8 +824,8 @@
 			);
 			name = msu_mapTests;
 			productName = msu_mapTests;
-			productReference = 24EC523F16275786008D9BBF /* msu_mapTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 24EC523F16275786008D9BBF /* msu_mapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -795,6 +833,7 @@
 		24EC520116275785008D9BBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Minh Pham";
 				TargetAttributes = {
@@ -915,6 +954,7 @@
 				EDF2DDFC18E60CC900F6C55C /* wells.png in Resources */,
 				EDF2DDCE18E60CC900F6C55C /* morrill.png in Resources */,
 				EDF2DDA918E60CC900F6C55C /* erickson.png in Resources */,
+				ED3388CF190895F00031E14E /* map_system.txt in Resources */,
 				EDF2DD8818E60CC900F6C55C /* auditorium.png in Resources */,
 				EDF2DDC518E60CC900F6C55C /* laundry.png in Resources */,
 				EDF2DDC418E60CC900F6C55C /* landon.png in Resources */,
@@ -926,6 +966,7 @@
 				EDEC8E8818C91B16008230EA /* auditoriumDoor.gpx in Resources */,
 				EDF2DD8D18E60CC900F6C55C /* beaumont_tower.png in Resources */,
 				EDEC8E8618C9195E008230EA /* auditorium.gpx in Resources */,
+				EDDB56101909880C00F73A1D /* map_system_with_adjacency_list.txt in Resources */,
 				EDF2DDCB18E60CC900F6C55C /* marymayo.png in Resources */,
 				EDF2DDA718E60CC900F6C55C /* engresearch.png in Resources */,
 				EDF2DDB918E60CC900F6C55C /* humanecology.png in Resources */,
@@ -1014,11 +1055,16 @@
 			files = (
 				24EC521B16275786008D9BBF /* main.m in Sources */,
 				24EC521F16275786008D9BBF /* AppDelegate.m in Sources */,
+				ED3388D6190896C10031E14E /* MapVertex.m in Sources */,
 				24EC522E16275786008D9BBF /* MapViewController.m in Sources */,
+				ED3388D9190896D10031E14E /* MapEdge.m in Sources */,
 				24EC5259164E065E008D9BBF /* CurrentLocation.m in Sources */,
+				ED9C4C4219098B4600AC5931 /* MinHeap.m in Sources */,
 				24EC526C164E2516008D9BBF /* JSONParser.m in Sources */,
 				24EC527D164E4AD3008D9BBF /* MapView.m in Sources */,
 				24DFD0C8164F64BC0034646D /* BuildingSystem.m in Sources */,
+				ED3388DC190896E00031E14E /* MapSystem.m in Sources */,
+				ED9C4C3F19098A2C00AC5931 /* AStarPathFinder.m in Sources */,
 				ED30707718B32B4700267171 /* DirectionGiver.m in Sources */,
 				24DFD0D5164F75290034646D /* BuildingTableViewController.m in Sources */,
 				ED18363518C795E1000C5FCF /* SegmentHelper.m in Sources */,
@@ -1034,6 +1080,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDDB560E1909747F00F73A1D /* pathFindingTest.m in Sources */,
 				ED18363018C78E4E000C5FCF /* directionTest.m in Sources */,
 				24EC524E16275786008D9BBF /* msu_mapTests.m in Sources */,
 			);
@@ -1176,13 +1223,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_mapTests/msu_mapTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1193,13 +1240,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_mapTests/msu_mapTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

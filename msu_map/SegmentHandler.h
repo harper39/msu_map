@@ -20,6 +20,9 @@
 // Constructor with content of the json query
 - (id) initWithContent: (NSDictionary*) content;
 
+// Constructor with edges array
+- (id) initWithEdgeArrray: (NSArray*) edgeArray;
+
 // get current path from segments till just before current location
 - (NSArray*) getPathWithoutCurrentLocation;
 

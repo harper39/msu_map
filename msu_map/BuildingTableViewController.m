@@ -62,7 +62,7 @@
     }
     
     // For some of the the last letter that didn't get count
-    for (int i=count; i<26; i++) indexList[i] = buildings.getBuildings.count-1;
+    for (int i=count; i<26; i++) indexList[i] = (int)buildings.getBuildings.count-1;
 }
 
 - (void)didReceiveMemoryWarning

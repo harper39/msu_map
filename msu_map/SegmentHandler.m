@@ -8,6 +8,8 @@
 
 #import "SegmentHandler.h"
 
+#include "MapEdge.h"
+
 @implementation SegmentHandler { 
     NSArray* segmentArray; // array contains all segments
     NSArray* pathArray; // array contains all path
@@ -28,6 +30,22 @@
     segmentArray = segments;
     pathLength = [content objectForKey:@"GEOM_LENGTH"];
     
+    [self setUp];
+    return self;
+}
+
+// Constructor with edges array
+// \param edgeArray an array with MapEdge elements
+- (id) initWithEdgeArrray: (NSArray*) edgeArray {
+    segmentArray = edgeArray;
+    pathLength = [[NSNumber alloc] initWithDouble:0.0];
+    
+    [self setUp];
+    return self;
+}
+
+// Do set up after initialization
+-(void) setUp {
     [self trimSegment];
     [self computeSegmentsBearing];
     dirGiver = [[DirectionGiver alloc] initWithSegHandler:self];
@@ -38,8 +56,6 @@
         [path addObjectsFromArray:[[segmentArray objectAtIndex:i] getPath]];
     }
     pathArray = path;
-    
-    return self;
 }
 
 // Get current path from segments and current location
@@ -61,7 +77,7 @@
     assert(pathInx % 2 == 1);
     if (pathInx > pathArray.count-3) {
         NSLog(@"I skewed up: Path index too big: %d", pathInx);
-        pathInx = pathArray.count-3;
+        pathInx = (int)pathArray.count-3;
     }
     return [pathArray subarrayWithRange:NSMakeRange(0, pathInx+3)];
 }

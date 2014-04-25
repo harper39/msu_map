@@ -50,8 +50,8 @@ const double NowDistanceThreshold = 15.0;
 {
     segHandler = aSegHandler;
     segHelper = [SegmentHelper alloc];
-    currSegInx = [[segHandler getAllSegments] count] - 1;
-    currPointInx = [[[[segHandler getAllSegments] lastObject] getPath] count] - 3;
+    currSegInx = (int) [[segHandler getAllSegments] count] - 1;
+    currPointInx = (int) [[[[segHandler getAllSegments] lastObject] getPath] count] - 3;
     directionString = @"Direction not ready";
     currLat = 0;
     currLong = 0;
