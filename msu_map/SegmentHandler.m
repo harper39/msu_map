@@ -34,6 +34,34 @@
     return self;
 }
 
+- (id) initWithPaths:(NSArray*)paths
+{
+    NSMutableArray* segments = [[NSMutableArray alloc] initWithCapacity:[paths count]];
+    double tempPathLength = 0.0;
+    for(int i=0; i<[paths count]; i++)
+    {
+        NSMutableArray* pointsArray = [[NSMutableArray alloc] init];
+        double length = 0.0;
+        NSArray* path = paths[i];
+        for (int j=0; j< [path count]; j++) {
+            NSArray* point = [path objectAtIndex:j];
+            
+            [pointsArray addObject:point[0]];
+            [pointsArray addObject:point[1]];
+            length = [point[2] doubleValue];
+        }
+        NSString* segName = [NSString stringWithFormat:@"path %d", i];
+        Segment* tempSeg = [[Segment alloc] initWithPath:pointsArray length:length name:segName type:@"none"];
+        [segments addObject:tempSeg];
+        tempPathLength += length;
+    }
+    segmentArray = segments;
+    pathLength = [NSNumber numberWithDouble:tempPathLength];
+    
+    [self setUp];
+    return self;
+}
+
 // Constructor with edges array
 // \param edgeArray an array with MapEdge elements
 - (id) initWithEdgeArrray: (NSArray*) edgeArray {
@@ -156,5 +184,38 @@
     }
     [[segmentArray firstObject] updateBearingFromSegment:nil];
 }
+
+/*
+function _fromCompressedGeometry( String str, SpatialReference sr) {
+    var xDiffPrev = 0,
+    yDiffPrev = 0,
+    points = [],
+    x, y,
+    strings,
+    coefficient;
+    
+    // Split the string into an array on the + and - characters
+    strings = str.match(/((\+|\-)[^\+\-]+)/g);
+    
+    // The first value is the coefficient in base 32
+    coefficient = parseInt(strings[0], 32);
+    
+    for (var j = 1; j < strings.length; j += 2) {
+        // j is the offset for the x value
+        // Convert the value from base 32 and add the previous x value
+        x = (parseInt(strings[j], 32) + xDiffPrev);
+        xDiffPrev = x;
+        
+        // j+1 is the offset for the y value
+        // Convert the value from base 32 and add the previous y value
+        y = (parseInt(strings[j + 1], 32) + yDiffPrev);
+        yDiffPrev = y;
+        
+        points.push([x / coefficient, y / coefficient]);
+    }
+    
+    return points;
+}
+*/
 
 @end

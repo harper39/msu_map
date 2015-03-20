@@ -58,7 +58,7 @@ const double DistanceThreshold = 0.0005;
     if (![currLoc isWorking])
     {
         [self updateStatus:@"Cannot find current location"];
-        return;
+        //return;
     }
     
     if (destinationBuilding != nil)
@@ -70,11 +70,11 @@ const double DistanceThreshold = 0.0005;
         [currLoc Start];
         
         // Retrieve users current location
-        NSNumber* latitude  = @42.729944; // used for testing
-        NSNumber* longitude = @(-84.473534); // used for testing
-        latitude = [currLoc latitude];
-        longitude = [currLoc longitude];
-        NSLog(@"Current location: %@", [currLoc deviceLocation]);
+        NSNumber* longitude  = @42.729944; // used for testing
+        NSNumber* latitude = @(-84.473534); // used for testing
+        //latitude = [currLoc latitude];
+        //longitude = [currLoc longitude];
+        //NSLog(@"Current location: %@", [currLoc deviceLocation]);
         NSLog(@"Destination location: latitude: %@, longitude: %@", [destinationBuilding latitude], [destinationBuilding longitude]);
         
         [mapView addAnnotation: [destinationBuilding latitude] : [destinationBuilding longitude] : [destinationBuilding commonName]];
@@ -142,22 +142,18 @@ const double DistanceThreshold = 0.0005;
 // Get path array from server
 - (void) updateSegmentFromServer: (NSString*) buildingID lat: (NSNumber*) latitude long: (NSNumber*)longitude
 {
-    // Retrieve the path array frrom server using JSON parser
-    /*
-     SegmentHandler *segHandler = [parse getSegmentToDestination:buildingID
-     :latitude
-     :longitude];
-     */
-    segHandler = [parse getTestSegment];
-    MapSystem* mapSys = [[MapSystem alloc] init];
-    segHandler = [mapSys findPathFromLatitude:[latitude doubleValue] longitude:[longitude doubleValue] toVertexInx:10];
+    segHandler = [parse getSegmentFromLat:-84.480924 :42.7250467 :[latitude doubleValue] :[longitude doubleValue]];
+    //MapSystem* mapSys = [[MapSystem alloc] init];
+    //segHandler = [mapSys findPathFromLatitude:[latitude doubleValue] longitude:[longitude doubleValue] toVertexInx:10];
 }
 
 // Get path array from map system
 - (void) updateSegmentFromMapSystem: (NSString*) buildingID lat: (NSNumber*) latitude long: (NSNumber*)longitude
 {
-    MapSystem* mapSys = [[MapSystem alloc] init];
-    segHandler = [mapSys findPathFromLatitude:[latitude doubleValue] longitude:[longitude doubleValue] toVertexInx:10];
+    segHandler = [parse getSegmentFromLat:-84.480924 :42.7250467 :[latitude doubleValue] :[longitude doubleValue]];
+    int x = 0;
+    //MapSystem* mapSys = [[MapSystem alloc] init];
+    //segHandler = [mapSys findPathFromLatitude:[latitude doubleValue] longitude:[longitude doubleValue] toVertexInx:10];
 }
 
 // Get path array from server

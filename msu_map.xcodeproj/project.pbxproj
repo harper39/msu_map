@@ -36,6 +36,8 @@
 		ED3388D6190896C10031E14E /* MapVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388D5190896C10031E14E /* MapVertex.m */; };
 		ED3388D9190896D10031E14E /* MapEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388D8190896D10031E14E /* MapEdge.m */; };
 		ED3388DC190896E00031E14E /* MapSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388DB190896E00031E14E /* MapSystem.m */; };
+		ED404D4D1ABBBB430091C52F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED404D4C1ABBBB430091C52F /* MapViewController.swift */; };
+		ED4730461AA0067D00075312 /* jsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4730451AA0067D00075312 /* jsonParserTest.m */; };
 		ED49106F16F00DF300AAE59E /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = ED49106E16F00DF300AAE59E /* Building.m */; };
 		ED756C801836EE37007522DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED756C7F1836EE37007522DB /* AudioToolbox.framework */; };
 		ED756C821836F23C007522DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED756C811836F23C007522DB /* Images.xcassets */; };
@@ -254,6 +256,9 @@
 		ED3388D8190896D10031E14E /* MapEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapEdge.m; sourceTree = "<group>"; };
 		ED3388DA190896E00031E14E /* MapSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSystem.h; sourceTree = "<group>"; };
 		ED3388DB190896E00031E14E /* MapSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSystem.m; sourceTree = "<group>"; };
+		ED404D4B1ABBBB420091C52F /* msu_map-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "msu_map-Bridging-Header.h"; sourceTree = "<group>"; };
+		ED404D4C1ABBBB430091C52F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		ED4730451AA0067D00075312 /* jsonParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jsonParserTest.m; sourceTree = "<group>"; };
 		ED49106E16F00DF300AAE59E /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 		ED756C7F1836EE37007522DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ED756C811836F23C007522DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -550,6 +555,7 @@
 				24EC524C16275786008D9BBF /* msu_mapTests.h */,
 				24EC524D16275786008D9BBF /* msu_mapTests.m */,
 				24EC524716275786008D9BBF /* Supporting Files */,
+				ED4730451AA0067D00075312 /* jsonParserTest.m */,
 			);
 			path = msu_mapTests;
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 		ED30707818B32B8800267171 /* segment */ = {
 			isa = PBXGroup;
 			children = (
+				ED404D4C1ABBBB430091C52F /* MapViewController.swift */,
 				EDFE91CA1800905100523DFD /* Segment.h */,
 				EDFE91CB1800905100523DFD /* Segment.m */,
 				ED18363318C795E1000C5FCF /* SegmentHelper.h */,
@@ -591,6 +598,7 @@
 				ED30707618B32B4700267171 /* DirectionGiver.m */,
 				EDFE91CD180096E200523DFD /* SegmentHandler.h */,
 				EDFE91CE180096E200523DFD /* SegmentHandler.m */,
+				ED404D4B1ABBBB420091C52F /* msu_map-Bridging-Header.h */,
 			);
 			name = segment;
 			sourceTree = "<group>";
@@ -1066,6 +1074,7 @@
 				ED3388DC190896E00031E14E /* MapSystem.m in Sources */,
 				ED9C4C3F19098A2C00AC5931 /* AStarPathFinder.m in Sources */,
 				ED30707718B32B4700267171 /* DirectionGiver.m in Sources */,
+				ED404D4D1ABBBB430091C52F /* MapViewController.swift in Sources */,
 				24DFD0D5164F75290034646D /* BuildingTableViewController.m in Sources */,
 				ED18363518C795E1000C5FCF /* SegmentHelper.m in Sources */,
 				24DFD0E7164F9F0A0034646D /* BuildingInfoViewController.m in Sources */,
@@ -1082,6 +1091,7 @@
 			files = (
 				EDDB560E1909747F00F73A1D /* pathFindingTest.m in Sources */,
 				ED18363018C78E4E000C5FCF /* directionTest.m in Sources */,
+				ED4730461AA0067D00075312 /* jsonParserTest.m in Sources */,
 				24EC524E16275786008D9BBF /* msu_mapTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1136,13 +1146,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1154,7 +1167,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1165,18 +1178,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1189,12 +1205,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "msu_map/msu_map-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1205,12 +1225,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "msu_map/msu_map-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

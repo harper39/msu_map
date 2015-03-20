@@ -20,6 +20,9 @@
 // Constructor with content of the json query
 - (id) initWithContent: (NSDictionary*) content;
 
+// Constructor with a paths of the json query
+- (id) initWithPaths: (NSArray*) paths;
+
 // Constructor with edges array
 - (id) initWithEdgeArrray: (NSArray*) edgeArray;
 

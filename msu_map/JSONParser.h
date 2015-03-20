@@ -26,6 +26,11 @@
                     :(NSNumber*)latitude
                     :(NSNumber*)longitude;
 
+- (SegmentHandler*)getSegmentFromLat: (double) fromLat
+                                    : (double) fromLong
+                                    : (double) toLat
+                                    : (double) toLong;
+
 // Query database to get a test segment
 // Should not be used in actual application
 - (SegmentHandler*) getTestSegment;

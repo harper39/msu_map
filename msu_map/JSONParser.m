@@ -8,7 +8,7 @@
 
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define BaseURL @"https://dev.gis.msu.edu/ws/wayfinding/service?QUERY="
+#define BaseURL @"http://prod.gis.msu.edu/arcgis/rest/services/routing/ped_network/NAServer/Route/solve?"
 #define CordSys @"GOOGLE"
 #define TestURL @"http://gis.msu.edu/segmentsll.json"
 
@@ -16,12 +16,25 @@
 
 NSDictionary* sampleQuery;
 
+// helper function: get the string form of any object
+static NSString *toString(id object) {
+    return [NSString stringWithFormat: @"%@", object];
+}
+
+// helper function: get the url encoded string form of any object
+static NSString *urlEncode(id object) {
+    NSString *string = toString(object);
+    return [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+}
+
+
 // Add methods to NSDictionary
 // -----------------------------------------------
 @interface NSDictionary(JSONCategories)
 +(NSDictionary*)dictionaryWithContentsOfJSONURLString:
 (NSString*)urlAddress;
 -(NSData*)toJSON;
+-(NSString*) urlEncodedString;
 @end
 
 @implementation NSDictionary(JSONCategories)
@@ -79,21 +92,29 @@ NSDictionary* sampleQuery;
     if (error != nil) return nil;
     return result;
 }
+
+-(NSString*) urlEncodedString {
+    NSMutableArray *parts = [NSMutableArray array];
+    for (id key in self) {
+        id value = [self objectForKey: key];
+        NSString *part = [NSString stringWithFormat: @"%@=%@", urlEncode(key), urlEncode(value)];
+        [parts addObject: part];
+    }
+    return [parts componentsJoinedByString: @"&"];
+}
+
 @end
 // -----------------------------------------------
 
 @implementation JSONParser
 
 
-- (NSData*)appendJSONDictionary:(NSDictionary*)jsonDict
+- (NSData*)appendJSONDictionary:(NSDictionary*)queryDict
                           toURL:(NSString*)url
 {
-    NSData* jsonData = [jsonDict toJSON];
+    NSString* queryString = [queryDict urlEncodedString];
     
-    NSString* jsonString = [[NSString alloc]initWithData:jsonData
-                                                encoding:NSUTF8StringEncoding];
-    
-    NSString* completeURL = [url stringByAppendingString:jsonString];
+    NSString* completeURL = [url stringByAppendingString:queryString];
     NSString* escapedUrlString = [completeURL stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding];
     NSURL* escapedUrl = [NSURL URLWithString:escapedUrlString];
     return [NSData dataWithContentsOfURL: escapedUrl];
@@ -113,8 +134,8 @@ NSDictionary* sampleQuery;
             return nil;
         }
     
-    NSDictionary* content = [json objectForKey:@"CONTENT"];
-    return content;
+    //NSDictionary* content = [json objectForKey:@"CONTENT"];
+    return json;
 }
 
 - (NSNumber*)getBuildingID:(NSString*)buildingName
@@ -206,6 +227,37 @@ NSDictionary* sampleQuery;
     {
         NSDictionary* content = [self fetchedData:data];    // TODO: should be executed in a seperate thread
         return [content objectForKey:@"GEOMETRY"];
+    }
+    else{
+        return nil;
+    }
+}
+
+- (SegmentHandler*)getSegmentFromLat: (double) fromLat
+                                    : (double) fromLong
+                                    : (double) toLat
+                                    : (double) toLong {
+    
+    
+    NSMutableDictionary* query = [[NSMutableDictionary alloc] init];
+    
+    query[@"stops"] = [NSString stringWithFormat:@"%f,%f;%f,%f",
+                         fromLat, fromLong, toLat, toLong];
+    query[@"f"] = @"pjson";
+    query[@"outSR"] = @"4236";
+    NSData* data = [self appendJSONDictionary:query toURL:BaseURL];
+    if (data)
+    {
+        NSDictionary* content = [self fetchedData:data];    // TODO: should be executed in a seperate thread
+        NSArray* message = [content objectForKey:@"messages"];
+        //if (message != nil) NSLog(@"%@",message);
+        NSDictionary* routes = [content objectForKey:@"routes"];
+        NSArray* features = [routes objectForKey:@"features"];
+        NSDictionary* feature = [features objectAtIndex:0];
+        NSDictionary* geometry = [feature objectForKey:@"geometry"];
+        NSArray* paths = [geometry objectForKey:@"paths"];
+        
+        return [[SegmentHandler alloc] initWithPaths:paths];
     }
     else{
         return nil;
