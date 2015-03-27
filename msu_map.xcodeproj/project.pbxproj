@@ -36,7 +36,8 @@
 		ED3388D6190896C10031E14E /* MapVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388D5190896C10031E14E /* MapVertex.m */; };
 		ED3388D9190896D10031E14E /* MapEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388D8190896D10031E14E /* MapEdge.m */; };
 		ED3388DC190896E00031E14E /* MapSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3388DB190896E00031E14E /* MapSystem.m */; };
-		ED404D4D1ABBBB430091C52F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED404D4C1ABBBB430091C52F /* MapViewController.swift */; };
+		ED404D4D1ABBBB430091C52F /* ArcGisMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED404D4C1ABBBB430091C52F /* ArcGisMapViewController.swift */; };
+		ED404D511ABBC3EA0091C52F /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED404D501ABBC3EA0091C52F /* ArcGIS.bundle */; };
 		ED4730461AA0067D00075312 /* jsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4730451AA0067D00075312 /* jsonParserTest.m */; };
 		ED49106F16F00DF300AAE59E /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = ED49106E16F00DF300AAE59E /* Building.m */; };
 		ED756C801836EE37007522DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED756C7F1836EE37007522DB /* AudioToolbox.framework */; };
@@ -257,7 +258,8 @@
 		ED3388DA190896E00031E14E /* MapSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSystem.h; sourceTree = "<group>"; };
 		ED3388DB190896E00031E14E /* MapSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSystem.m; sourceTree = "<group>"; };
 		ED404D4B1ABBBB420091C52F /* msu_map-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "msu_map-Bridging-Header.h"; sourceTree = "<group>"; };
-		ED404D4C1ABBBB430091C52F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		ED404D4C1ABBBB430091C52F /* ArcGisMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGisMapViewController.swift; sourceTree = "<group>"; };
+		ED404D501ABBC3EA0091C52F /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ArcGIS.bundle; sourceTree = "<group>"; };
 		ED4730451AA0067D00075312 /* jsonParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jsonParserTest.m; sourceTree = "<group>"; };
 		ED49106E16F00DF300AAE59E /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 		ED756C7F1836EE37007522DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -493,6 +495,7 @@
 		24EC51FF16275785008D9BBF = {
 			isa = PBXGroup;
 			children = (
+				ED404D501ABBC3EA0091C52F /* ArcGIS.bundle */,
 				24EC5282164ED209008D9BBF /* libsqlite3.0.dylib */,
 				24EC5263164E1232008D9BBF /* CoreLocation.framework */,
 				24EC5261164E122B008D9BBF /* MapKit.framework */,
@@ -589,7 +592,7 @@
 		ED30707818B32B8800267171 /* segment */ = {
 			isa = PBXGroup;
 			children = (
-				ED404D4C1ABBBB430091C52F /* MapViewController.swift */,
+				ED404D4C1ABBBB430091C52F /* ArcGisMapViewController.swift */,
 				EDFE91CA1800905100523DFD /* Segment.h */,
 				EDFE91CB1800905100523DFD /* Segment.m */,
 				ED18363318C795E1000C5FCF /* SegmentHelper.h */,
@@ -987,6 +990,7 @@
 				EDF2DDC918E60CC900F6C55C /* manlymiles.png in Resources */,
 				EDF2DDBB18E60CC900F6C55C /* im_sports_west.png in Resources */,
 				ED756C981836FCE3007522DB /* engineeringBuilding.gpx in Resources */,
+				ED404D511ABBC3EA0091C52F /* ArcGIS.bundle in Resources */,
 				EDF2DDCF18E60CC900F6C55C /* munn.png in Resources */,
 				EDF2DD9A18E60CC900F6C55C /* clinicalcenter.png in Resources */,
 				ED756C821836F23C007522DB /* Images.xcassets in Resources */,
@@ -1074,7 +1078,7 @@
 				ED3388DC190896E00031E14E /* MapSystem.m in Sources */,
 				ED9C4C3F19098A2C00AC5931 /* AStarPathFinder.m in Sources */,
 				ED30707718B32B4700267171 /* DirectionGiver.m in Sources */,
-				ED404D4D1ABBBB430091C52F /* MapViewController.swift in Sources */,
+				ED404D4D1ABBBB430091C52F /* ArcGisMapViewController.swift in Sources */,
 				24DFD0D5164F75290034646D /* BuildingTableViewController.m in Sources */,
 				ED18363518C795E1000C5FCF /* SegmentHelper.m in Sources */,
 				24DFD0E7164F9F0A0034646D /* BuildingInfoViewController.m in Sources */,
@@ -1146,6 +1150,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1156,6 +1161,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1168,9 +1174,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				SDKROOT = iphoneos8.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1178,6 +1192,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1188,15 +1203,25 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				SDKROOT = iphoneos8.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1210,8 +1235,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/msu_map",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "msu_map/msu_map-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1230,8 +1259,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "msu_map/msu_map-Prefix.pch";
 				INFOPLIST_FILE = "msu_map/msu_map-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/msu_map",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "msu_map/msu_map-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;

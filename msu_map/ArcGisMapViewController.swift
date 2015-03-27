@@ -1,11 +1,25 @@
+//
+// Copyright 2014 ESRI
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// You may freely redistribute and use this sample code, with or
+// without modification, provided you include the original copyright
+// notice and use restrictions.
+//
+// See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
+//
+
 import UIKit
 import ArcGIS
 
-let kTiledMapServiceUrl = "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+//let kTiledMapServiceUrl = "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+let kTiledMapServiceUrl = "http://prod.gis.msu.edu/arcgis/rest/services/basemap/osm/MapServer"
 //let kRouteTaskUrl = "http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Route"
 let kRouteTaskUrl = "https://prod.gis.msu.edu/arcgis/rest/services/routing/ped_network/NAServer/Route"
 
-class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDelegate, UIAlertViewDelegate {
+class ArcGisMapViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDelegate, UIAlertViewDelegate {
     
     @IBOutlet weak var mapView:AGSMapView!
     @IBOutlet weak var sketchModeSegCtrl:UISegmentedControl!
@@ -455,12 +469,13 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
     // perform the route task's solve operation
     //
     @IBAction func routeBtnClicked() {
-        
+self.drawRoute(42.724798, fromLong: -84.481462, toLat: 42.7291990138, toLong: -84.4771316579)
+        /*
         // update our banner
         self.updateDirectionsLabel("Routing...")
         
         // if we have a sketch layer on the map, remove it
-        /*
+        
         if let sketchLayer = find(self.mapView.mapLayers as [AGSLayer], self.sketchLayer as AGSLayer) {
         self.mapView.removeMapLayerWithName(self.sketchLayer.name)
         self.mapView.touchDelegate = nil
@@ -471,7 +486,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         for var i = 0; i < self.sketchModeSegCtrl.numberOfSegments; i++ {
         self.sketchModeSegCtrl.setEnabled(false, forSegmentAtIndex:i)
         }
-        }*/
+        }
         
         var stops = [AGSStopGraphic]()
         var polygonBarriers = [AGSGraphic]()
@@ -489,6 +504,8 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
                 print(g.dynamicType.description())
                 polygonBarriers.append(g as AGSGraphic)
             }
+            
+            
         }
         
         // set the stop and polygon barriers on the parameters object
@@ -533,7 +550,71 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         // execute the route task
         self.routeTask.solveWithParameters(self.routeTaskParams)
+*/
     }
+    
+    func drawRoute(fromLat: Double, fromLong: Double, toLat: Double, toLong: Double) {
+        
+        // update our banner
+        self.updateDirectionsLabel("Routing...")
+        
+        // if we have a sketch layer on the map, remove it
+        /*
+        if let sketchLayer = find(self.mapView.mapLayers as [AGSLayer], self.sketchLayer as AGSLayer) {
+        self.mapView.removeMapLayerWithName(self.sketchLayer.name)
+        self.mapView.touchDelegate = nil
+        self.sketchLayer = nil
+        
+        //also disable the sketch control so that user cannot sketch
+        self.sketchModeSegCtrl.selectedSegmentIndex = -1
+        for var i = 0; i < self.sketchModeSegCtrl.numberOfSegments; i++ {
+        self.sketchModeSegCtrl.setEnabled(false, forSegmentAtIndex:i)
+        }
+        }*/
+        
+        var stops = [AGSStopGraphic]()
+        var fromPoint = AGSPoint(x: fromLong, y: fromLat, spatialReference: AGSSpatialReference(WKID: 4326))
+        var toPoint = AGSPoint(x: toLong, y: toLat, spatialReference: AGSSpatialReference(WKID: 4326))
+        
+        stops.append(AGSStopGraphic(geometry: fromPoint, symbol: nil, attributes: nil))
+        stops.append(AGSStopGraphic(geometry: toPoint, symbol: nil, attributes: nil))
+        self.routeTaskParams.setStopsWithFeatures(stops)
+        
+        // this generalizes the route graphics that are returned
+        self.routeTaskParams.outputGeometryPrecision = 5.0
+        self.routeTaskParams.outputGeometryPrecisionUnits = .Meters
+        
+        // return the graphic representing the entire route, generalized by the previous
+        // 2 properties: outputGeometryPrecision and outputGeometryPrecisionUnits
+        self.routeTaskParams.returnRouteGraphics = true
+        
+        // this returns turn-by-turn directions
+        self.routeTaskParams.returnDirections = true
+        
+        // the next 3 lines will cause the task to find the
+        // best route regardless of the stop input order
+        self.routeTaskParams.findBestSequence = true
+        self.routeTaskParams.preserveFirstStop = true
+        self.routeTaskParams.preserveLastStop = false
+        
+        // since we used "findBestSequence" we need to
+        // get the newly reordered stops
+        self.routeTaskParams.returnStopGraphics = true
+        
+        // ensure the graphics are returned in our map's spatial reference
+        self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
+        
+        // let's ignore invalid locations
+        self.routeTaskParams.ignoreInvalidLocations = true
+        
+        // you can also set additional properties here that should
+        // be considered during analysis.
+        // See the conceptual help for Routing task.
+        
+        // execute the route task
+        self.routeTask.solveWithParameters(self.routeTaskParams)
+    }
+
     
     //
     // clear the sketch layer
@@ -627,4 +708,5 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         }else{
             return false
         }
+    }
 }

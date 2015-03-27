@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ArcGIS/ArcGIS.h>
 
 // Represent a segment with points, length, type, name and angle to next segment
 @interface Segment : NSObject
